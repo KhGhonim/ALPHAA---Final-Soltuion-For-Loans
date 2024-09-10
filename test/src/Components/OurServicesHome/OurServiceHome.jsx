@@ -1,10 +1,7 @@
 // @ts-ignore
 import HouseRoof from "../../assets/secoundroof3.png";
 import ServiceHomeCard from "./ServiceHomeCard";
-import {
-  ServicesHomeDB1,
-  ServicesHomeDB2,
-} from "../../constants/db";
+import { ServicesHomeDB1, ServicesHomeDB2 } from "../../constants/db";
 import ServiceSlider from "./ServiceSlider";
 import { useState, useRef, useEffect } from "react";
 import SliderPhone from "./SliderPhone";
@@ -29,11 +26,23 @@ export default function OurServiceHome() {
   return (
     <div className="flex flex-col items-center justify-center h-full  bg-[#F5F5F5] ">
       <div className="flex flex-col items-center mt-16">
-        <img src={HouseRoof} alt="House Roof Services" />
-        <h1 className="text-5xl mt-9 font-bold text-primary ">Our Services</h1>
+        <div
+          className="w-24 h-24 bg-orange-500"
+          style={{
+            maskImage: `url(${HouseRoof})`,
+            WebkitMaskImage: `url(${HouseRoof})`,
+            maskSize: "contain",
+            WebkitMaskSize: "contain",
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+          }}
+        ></div>
+        <h1 className="text-4xl font-bold ">Our Services</h1>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row justify-between items-start md:container gap-6 md:mx-auto h-full mb-10  mt-20 max-md:p-1 font-cairo">
+      <div className="w-full flex flex-col md:flex-row p-9 justify-between items-start md:container gap-6 md:mx-auto h-full mb-10  mt-20 max-md:p-1 font-cairo">
         {/* First Card */}
         <div
           ref={cardsRef}
@@ -44,10 +53,7 @@ export default function OurServiceHome() {
           ))}
         </div>
         {/* Second Card */}
-        <div
-          ref={cardsRef}
-          className=" flex w-full md:w-2/6  gap-6  items-start  max-md:p-1 flex-wrap  max-md:gap-16"
-        >
+        <div className=" flex w-full md:w-2/6  gap-6  items-start  max-md:p-1 flex-wrap  max-md:gap-16">
           {ServicesHomeDB2.map((item, index) => (
             <ServiceHomeCard key={index} item={item} />
           ))}

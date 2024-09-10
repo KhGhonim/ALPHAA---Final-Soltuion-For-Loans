@@ -8,12 +8,31 @@ import { FaLocationDot } from "react-icons/fa6";
 import callcenter from "../../assets/close-up-person-working-call-center-1024x683.jpg";
 import { Link } from "react-router-dom";
 import { FaClock } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+
+
+const parentVariants2 = {
+  hidden: { opacity: 0, y: 1000 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1.5,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 
 export default function ContactUs() {
   return (
-    <div className="pt-16 pb-16 px-5 bg-white font-cairo">
+    <div className="pt-36 pb-16 px-5 bg-white font-cairo overflow-hidden">
       <div className=" flex justify-between gap-8 items-center container mx-auto flex-col md:flex-row">
-        <div className=" w-full md:w-1/3 flex flex-col">
+        <motion.div variants={parentVariants2} initial="hidden" animate="visible" className=" w-full md:w-1/3 flex flex-col">
           <h2 className="text-4xl font-bold text-primary">Contact Us</h2>
           <p className="text-zinc-600 text-base py-5">
             Please feel free to ask if you have any further questions.
@@ -80,15 +99,15 @@ export default function ContactUs() {
               <FaViber size={20} />
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex justify-end">
+        <motion.div variants={parentVariants2} initial="hidden" animate="visible" className="flex justify-end">
           <img
             alt="Contact Phone"
             src={callcenter}
             className="rounded-lg w-full md:w-2/3 shadow-sm"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

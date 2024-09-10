@@ -31,7 +31,7 @@ body {
 }
 
 .zoom-out {
-  animation: zoomOut 13s ease-in-out infinite;
+  animation: zoomOut 15s ease-in-out infinite;
   transform-origin: center center; 
   width: 110%; 
   height: 110%;

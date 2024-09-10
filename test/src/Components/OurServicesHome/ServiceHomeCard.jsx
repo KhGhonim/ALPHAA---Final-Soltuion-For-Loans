@@ -1,6 +1,6 @@
 export default function ServiceHomeCard({ item }) {
   return (
-    <div className="h-full bg-[#FFFFFF]  rounded-3xl shadow-lg border-b-4 border-orange-500 p-7 w-full">
+    <div className="h-[500px] bg-[#FFFFFF]  rounded-3xl shadow-lg border-b-4 border-orange-500 p-7 w-full">
       <div className="flex flex-col gap-5 md:flex-row max-md:justify-center text-center items-center mb-6 ">
         <div
           className="w-16 h-16 bg-orange-500"
@@ -22,10 +22,10 @@ export default function ServiceHomeCard({ item }) {
       </div>
 
       <div className="w-full h-[0.5px] bg-[#585855] my-7"></div>
-      <p className="text-lg font-normal m-5 text-[#585860]">
+      <p className="text-base font-normal m-5 text-[#585860]">
         {item.Description1}
       </p>
-      <p className="text-lg font-normal m-5 text-[#585860]">
+      <p className="text-base font-normal m-5 text-[#585860]">
         {item.Description2}
       </p>
     </div>

@@ -1,12 +1,31 @@
 import HOUSE from "../../assets/HOUSE.png";
 import smroof from "../../assets/smroof.png";
 import family from "../../assets/Home-family.webp";
+import { motion } from "framer-motion";
+
+const parentVariants2 = {
+  hidden: { opacity: 0, x: 1000 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 2,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+
+
 export default function Lenders() {
   return (
     <div>
       {/** MD and LG divs */}
-      <div className="hidden md:flex  h-[100dvh] w-full relative bg-[#2A2C38] ">
-        <div className="w-full lg:w-96 absolute bottom-0 left-0 h-1/2 bg-[#F5F5F5] "></div>
+      <div className="hidden md:flex  h-[100dvh] w-full relative bg-[#2A2C38] overflow-hidden">
+        <div className="w-full lg:w-full absolute bottom-0 left-0 h-1/2 bg-[#F5F5F5] "></div>
 
         <div className="absolute bg-[#22232D] top-10 lg:top-0 bottom-0 max-lg:bottom-16 left-0 lg:left-[10%] right-0 flex flex-col lg:flex-row justify-between items-center lg:rounded-b-3xl md:space-y-10">
           <div className="lg:w-1/2 flex justify-start items-start flex-col p-4 lg:p-16">
@@ -17,7 +36,7 @@ export default function Lenders() {
             </h1>
           </div>
 
-          <div className="md:w-full md:h-4/5 lg:h-full relative">
+          <motion.div variants={parentVariants2} initial="hidden" animate="visible" className="md:w-full md:h-4/5 lg:h-full relative">
             <img
               src={family}
               alt="Family photo"
@@ -47,7 +66,7 @@ export default function Lenders() {
               <br />
               <span className="text-base font-bold">Years Experience</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

@@ -1,10 +1,32 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
+const parentVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 0.5,
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 export default function OurMissionOurStory() {
   return (
     <section className="border-t-8 border-orange-400 bg-[#2A2C38]  max-md:pb-16 max-md:pt-8 max-md:px-6 md:p-16 h-full  md:h-96 ">
       <div className="flex container mx-auto  flex-col md:flex-row gap-6">
-        <div className="bg-white border-b-[7px] border-orange-400  p-12 rounded-3xl shadow-md flex-1">
+        <motion.div
+          variants={parentVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="bg-white border-b-[7px] border-orange-400  p-12 rounded-3xl shadow-md flex-1"
+        >
           <h2 className="text-2xl font-bold">Our Story</h2>
           <p className="my-5 text-[#585855]">
             Alpha Financial Solutions provides bespoke mortgage and finance
@@ -17,9 +39,15 @@ export default function OurMissionOurStory() {
           >
             KNOW MORE
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="bg-white border-b-[7px] border-orange-400  p-12 rounded-3xl shadow-md flex-1">
+        <motion.div
+          variants={parentVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="bg-white border-b-[7px] border-orange-400  p-12 rounded-3xl shadow-md flex-1"
+        >
           <h2 className="text-2xl font-bold">Our Mission</h2>
           <p className="my-5 text-[#585855]">
             At Alpha Financial Solutions, our mission is to empower individuals
@@ -28,7 +56,7 @@ export default function OurMissionOurStory() {
             strive to build lasting relationships based on trust, integrity, and
             mutual success.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
