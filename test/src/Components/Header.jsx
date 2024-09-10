@@ -1,4 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
+// @ts-ignore
 import Logo from "../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { MdClose, MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -21,8 +23,10 @@ export default function Header() {
 
   return (
     <>
+
+      
       {/* PC HEADER */}
-      <header className="hidden md:block bg-white p-4 font-cairo">
+      <header className="hidden lg:block bg-white p-4 font-cairo">
         <div className="w-10/12 flex justify-between items-center container mx-auto">
           <Link to="/" className="flex items-center ">
             <img alt="logo" src={Logo} className=" w-full h-16 object-cover" />
@@ -95,6 +99,77 @@ export default function Header() {
             </button>
           </nav>
         </div>
+      </header>
+
+      {/* Tablet HEADER */}
+      <header className="hidden md:block lg:hidden bg-white p-4 font-cairo">
+        <div className="w-10/12 flex justify-between items-center container mx-auto">
+          <Link to="/" className="flex items-center ">
+            <img alt="logo" src={Logo} className=" w-full h-16 object-cover" />
+          </Link>
+          <nav className="space-x-1 flex justify-center relative items-center">
+            <div className="w-16 text-3xl re flex justify-center items-center font-bold my-7">
+              {menuOpen ? (
+                <MdClose
+                  className="cursor-pointer hover:text-orange-400"
+                  onClick={() => setMenuOpen(!menuOpen)}
+                />
+              ) : (
+                <IoMenu
+                  className="cursor-pointer hover:text-orange-400"
+                  onClick={() => setMenuOpen(!menuOpen)}
+                />
+              )}
+            </div>
+            <button className="bg-[#2A2C38] text-sm font-bold text-white p-4 rounded-lg hover:bg-[#2A2C38] hover:scale-110 transition-all duration-500 ease-in-out">
+              CALL US ANYTIME
+            </button>
+          </nav>
+        </div>
+        {menuOpen && (
+          <div className=" absolute flex flex-col left-0 w-full right-0  translate-y-0 z-50  bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out">
+            <Link
+              to="/"
+              className={`text-[#22232D]  text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
+                state.pathname === "/"
+                  ? "bg-orange-400"
+                  : " hover:text-white hover:bg-[#22232D]"
+              }`}
+            >
+              HOME
+            </Link>
+            <Link
+              to="/about-us"
+              className={`text-[#22232D]  text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
+                state.pathname === "/about-us"
+                  ? "bg-orange-400"
+                  : " hover:text-white hover:bg-[#22232D] "
+              }`}
+            >
+              ABOUT US
+            </Link>
+            <Link
+              to="/services"
+              className={`text-[#22232D] text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
+                state.pathname === "/services"
+                  ? "bg-orange-400"
+                  : " hover:text-white hover:bg-[#22232D] "
+              }`}
+            >
+              SERVICES
+            </Link>
+            <Link
+              to="/faq"
+              className={`text-[#22232D] text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
+                state.pathname === "/faq"
+                  ? "bg-orange-400"
+                  : " hover:text-white hover:bg-[#22232D] "
+              }`}
+            >
+              FAQ'S
+            </Link>
+          </div>
+        )}
       </header>
 
       {/* MOBILE HEADER */}

@@ -20,6 +20,7 @@ import CommercialLoanPage from "./Pages/Services/CommercialLoanPage/CommercialLo
 import AssetFinancePage from "./Pages/Services/AssetFinancePage/AssetFinancePage.jsx";
 import PersonalLoanPage from "./Pages/Services/PersonalLoanPage/PersonalLoanPage.jsx";
 import SmsfLendingPage from "./Pages/Services/SmsfLendingPage/SmsfLendingPage.jsx";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,6 +45,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </React.StrictMode>
 );

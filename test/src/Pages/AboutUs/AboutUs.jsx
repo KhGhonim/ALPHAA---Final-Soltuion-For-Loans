@@ -17,13 +17,18 @@ import { EffectFade } from "swiper/modules";
 import "swiper/css/effect-fade";
 import { ServicesHomeSlider } from "../../constants/db";
 import AboutUsSlider from "./AboutUsSlider";
+import { Helmet } from "react-helmet-async";
 
 const photos = [blackboy, whitboiy, yasli];
 export default function AboutUs() {
   return (
     <div className="w-full h-full bg-[#F5F5F5] font-cairo ">
-      <div className="container mx-auto ">
-        <h1 className="text-4xl font-bold p-4 ">About Us</h1>
+           <Helmet>
+        <title>About Us - AlPHAA Financial Solutions</title>
+        
+      </Helmet>
+      <div className="container mx-auto w-full ">
+        <h1 className="text-5xl ml-24 font-bold p-4 ">About Us</h1>
 
         <div className="flex justify-center items-center">
           <div
