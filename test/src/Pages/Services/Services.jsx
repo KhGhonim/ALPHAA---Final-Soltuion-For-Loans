@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import OurServiceHome from "../../Components/OurServicesHome/OurServiceHome";
+// @ts-ignore
+import ServicesBanner from "../../assets/ServicesBanner.jpg";
 
 export default function Services() {
   return (
@@ -11,7 +13,8 @@ export default function Services() {
         Title={`Services`}
         Description={`Find the right home for your budget`}
         Subtitle={`Our services`}
-      />
+        ServicesBanner={ServicesBanner}
+        ServiceTitle={`Services`} ExtraLoanTitle={undefined}      />
     </div>
   );
 }

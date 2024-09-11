@@ -9,8 +9,9 @@ export default function ServiceSlider({ height }) {
   useCountUp({
     ref: "counter",
     end: 100,
-    scrollSpyOnce: false,
+    scrollSpyOnce: true,
     scrollSpyDelay: 1000,
+    enableScrollSpy: true,
   });
 
   return (
@@ -43,7 +44,7 @@ export default function ServiceSlider({ height }) {
               </h4>
               <div className="mt-4 text-center font-bold text-3xl">
                 {" "}
-                <CountUp end={100} scrollSpyOnce  /> +
+                <CountUp end={100} enableScrollSpy scrollSpyOnce  /> +
               </div>
               <h6 className="mt-2 text-base text-center ">Simplify the loan</h6>
             </div>

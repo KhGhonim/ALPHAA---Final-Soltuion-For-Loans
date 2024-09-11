@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 // @ts-ignore
 import HouseRoof from "../../assets/secoundroof3.png";
 // @ts-ignore
-import ServicesBanner from "../../assets/ServicesBanner.jpg";
 import ServiceHomeCard from "./ServiceHomeCard";
 import { ServicesHomeDB1, ServicesHomeDB2 } from "../../constants/db";
 import ServiceSlider from "./ServiceSlider";
@@ -11,8 +11,14 @@ import { useLocation } from "react-router-dom";
 import Lottie from "lottie-react";
 import Arrow from "../../assets/Arrow.json";
 
-// eslint-disable-next-line react/prop-types
-export default function OurServiceHome({ Title, Description, Subtitle }) {
+export default function OurServiceHome({
+  Title,
+  Description,
+  Subtitle,
+  ServicesBanner,
+  ServiceTitle,
+  ExtraLoanTitle,
+}) {
   const [sliderHeight, setSliderHeight] = useState(0);
   const cardsRef = useRef(null);
   const location = useLocation();
@@ -31,19 +37,19 @@ export default function OurServiceHome({ Title, Description, Subtitle }) {
   }, []);
 
   return (
-    <div className="flex flex-col  h-full  bg-[#F5F5F5] ">
-      <h1 className="text-5xl md:ml-24 font-bold p-4 ">{Title}</h1>
+    <div className="flex flex-col  h-full  bg-[#F5F5F5] font-cairo">
+      <h1 className="text-5xl md:ml-28 font-bold p-4 ">{Title}</h1>
       {location.pathname === "/services" ? (
         <div className="w-full relative">
           <img
             src={ServicesBanner}
             alt="Services Banner"
-            className="w-full h-96 object-cover object-center "
+            className="w-full h-80 object-cover object-center "
           />
-          <div className="w-full h-96 absolute inset-0 bg-[#2A2C38] opacity-70">
+          <div className="w-full h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70">
             <div className="w-full h-full flex justify-center items-center flex-col">
               <h1 className="text-5xl text-center font-bold p-4 text-white">
-                Our Services
+                {ServiceTitle}
               </h1>
               <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
             </div>
@@ -64,7 +70,7 @@ export default function OurServiceHome({ Title, Description, Subtitle }) {
             WebkitMaskRepeat: "no-repeat",
           }}
         ></div>
-        <div>
+        <div className="flex flex-col items-center container capitalize w-4/6">
           <h6
             className={`text-lg text-center ${
               location.pathname === "/services" ? "py-4" : ""
@@ -73,6 +79,7 @@ export default function OurServiceHome({ Title, Description, Subtitle }) {
             {Subtitle}
           </h6>
           <h1 className="text-4xl text-center font-bold ">{Description}</h1>
+          <h1 className="text-2xl text-center font-bold ">{ExtraLoanTitle}</h1>
         </div>
       </div>
 

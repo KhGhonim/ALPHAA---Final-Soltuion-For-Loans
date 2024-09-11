@@ -18,6 +18,8 @@ import "swiper/css/effect-fade";
 import { ServicesHomeSlider } from "../../constants/db";
 import AboutUsSlider from "./AboutUsSlider";
 import { Helmet } from "react-helmet-async";
+import PAWAN from "../../Components/PAWAN/PAWAN";
+
 
 const photos = [blackboy, whitboiy, yasli];
 export default function AboutUs() {
@@ -27,7 +29,7 @@ export default function AboutUs() {
         <title>About Us - AlPHAA Financial Solutions</title>
         
       </Helmet>
-      <div className="container mx-auto w-full ">
+      <div className="container mx-auto w-full mb-10">
         <h1 className="text-5xl ml-24 font-bold p-4 ">About Us</h1>
 
         <div className="flex justify-center items-center">
@@ -45,7 +47,7 @@ export default function AboutUs() {
             }}
           ></div>
         </div>
-        <div className="flex justify-center items-center p-4 md:p-10">
+        <div className="flex justify-center items-center pb-4 ">
           <h1 className="text-4xl font-bold capitalize  text-center">
             We believe you’re bright
           </h1>
@@ -193,6 +195,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
+      <PAWAN photo={whitboiy } />
     </div>
   );
 }
