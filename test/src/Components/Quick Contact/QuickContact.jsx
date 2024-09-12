@@ -5,7 +5,7 @@ import { MdOutlineEmail } from "react-icons/md";
 
 export default function QuickContact() {
   return (
-    <div className="pt-16 pb-16 px-5 bg-[--DarkBGAndText] text-white mb-2 font-cairo">
+    <div className="pt-16 max-md:pt-8 pb-16 px-5 bg-[--DarkBGAndText] text-white mb-2 font-cairo">
       <div className="flex flex-col md:flex-row justify-between gap-8 container mx-auto  ">
         <div className="w-full md:w-1/2 mt-12">
           <h2 className="text-xl font-semibold text-[--Ornage]">

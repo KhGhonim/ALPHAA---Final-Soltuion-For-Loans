@@ -1,16 +1,18 @@
+// @ts-nocheck
 import MaskImage from "../assets/handonbuilding.png";
 import MaskImage2 from "../assets/key.png";
 import MaskImage3 from "../assets/twopeople.png";
 import MaskImage4 from "../assets/dollarwithbuilding.png";
 import MaskImage5 from "../assets/location.png";
-import GrandmaAndGrandpaSittingIntable from "../assets/happy-indian-asian-family-having-lunch-at-home-and-2024-05-13-16-50-29-utc.jpeg-scaled.jpg";
 import AsianFamily from "../assets/cheerful-family-2023-11-27-05-20-02-utc-scaled.jpg";
 import GrandmaAndGrandpaSitinginFlorr from "../assets/happy-indian-family-of-four-looking-at-photo-album-2024-02-13-20-54-46-utc.jpeg-scaled.jpg";
 import Lovelygirl from "../assets/Home-family.webp";
 import Slider1 from "../assets/family2.jpg";
 import Slider2 from "../assets/outdoor-portrait-of-cheerful-indian-family-sitting-.jpg";
 import Slider3 from "../assets/one-big-happy-family-cropped-shot-of-a-happy-dive-2023-11-27-04-53-51-utc1-scaled.jpg";
-
+import Card1 from "../assets/Card1.jpg";
+import Card2 from "../assets/Card2.jpg";
+import Card3 from "../assets/Card3.jpg";
 
 export const ServicesHomeDB = [
   {
@@ -79,10 +81,6 @@ export const ServicesHomeDB = [
     Description2: "",
   },
 ]
-
-
-
-
 
 export const ServicesHomeDB1 = [
   {
@@ -160,21 +158,6 @@ export const ServicesHomeDB2 = [
   },
 ]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const OurStoryOurMissionDB = [
   {
     Title: `Our Story`,
@@ -203,31 +186,73 @@ export const HomeSlider = [
 
 export const HeaderData = [
   {
-    name: "HOME LOAN",
-    link: "/HOME-LOAN"
+    name: "HOME",
+    link: "/"
   },
   {
-    name: "FIRST HOME BUYER",
-    link: "/FIRST-HOME-BUYER"
+    name: "ABOUT US",
+    link: "/about-us"
   },
   {
-    name: "REFINANCING",
-    link: "/REFINANCING"
+    name: "SERVICES",
+    link: "/services",
+    subMenu: [
+      { name: "HOME LOAN", link: "/HOME-LOAN" },
+      { name: "FIRST HOME BUYER", link: "/FIRST-HOME-BUYER" },
+      { name: "REFINANCING", link: "/REFINANCING" },
+      { name: "COMMERCIAL LOAN", link: "/COMMERCIAL-LOAN" },
+      { name: "ASSET FINANCE", link: "/ASSET-FINANCE" },
+      { name: "PERSONAL LOAN", link: "/PERSONAL-LOAN" },
+      { name: "SELF-MANAGED SUPER FUND (SMSF) LENDING", link: "/SELF-MANAGED-SUPER-FUND-(SMSF)-LENDING" }
+    ]
   },
   {
-    name: "COMMERCIAL LOAN",
-    link: "/COMMERCIAL-LOAN"
-  },
-  {
-    name: "ASSET FINANCE",
-    link: "/ASSET-FINANCE"
-  },
-  {
-    name: "PERSONAL LOAN",
-    link: "/PERSONAL-LOAN"
-  },
-  {
-    name: "SELF-MANAGED SUPER FUND (SMSF) LENDING",
-    link: "/SELF-MANAGED-SUPER-FUND-(SMSF)-LENDING"
+    name: "FAQ'S",
+    link: "/faqs"
   }
+];
+
+export const CardsForHomeLoans = [
+  {
+    title: "First Home Buyer",
+    description: `  First home buyers represent a significant portion of the real
+              estate market, often driven by the desire for stability,
+              investment in property, and the opportunity to personalize a
+              living space.`,
+    image: Card1,
+  },
+
+  {
+    title: "Refinancing",
+    description: `Refinancing involves replacing an existing mortgage with a new
+              loan, typically to take advantage of better terms, such as lower
+              interest rates, reduced monthly payments, or a shorter loan term.`,
+    image: Card2,
+  },
+
+  {
+    title: "Investment Property",
+    description: `An investment property is real estate purchased primarily for the
+              purpose of generating income or profit. Unlike a primary
+              residence, where the owner lives.`,
+    image: Card3,
+  },
+];
+
+export const CardsForRefinancing = [
+  {
+    title: "House Payment",
+    description: `Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.`,
+    image: Card1,
+  },
+  {
+    title: "Industrial Payment",
+    description: `Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.`,
+    image: Card2,
+  },
+  {
+    title: "Corporate Payment",
+    description: `Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.`,
+    image: Card3,
+  },
 ];

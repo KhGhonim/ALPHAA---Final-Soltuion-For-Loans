@@ -55,7 +55,6 @@
       "prettier/prettier": "error",
       "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["modules"] }],
       "node/no-missing-import": ["error", { "tryExtensions": [".js", ".json", ".node"] }],
-      "react/prop-types": "off"  // Optional: if using TypeScript or if PropTypes are not used
     },
     "env": {
       "browser": true,

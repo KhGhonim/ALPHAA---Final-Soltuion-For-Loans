@@ -6,7 +6,7 @@ import Arrow from "../../../assets/Arrow.json";
 import HouseRoof from "../../../assets/secoundroof3.png";
 import PhotoAndCards from "../../../Components/PhotoAndCards/PhotoAndCards";
 import PersonsWithKey from "../../../Components/PersonsWithKey/PersonsWithKey";
-import CallToAction from "../../../Components/CallToAction/CallToAction";
+import { CardsForHomeLoans } from "../../../constants/db";
 
 export default function HomeLoanPage() {
   return (
@@ -21,13 +21,12 @@ export default function HomeLoanPage() {
             alt="Services Banner"
             className="w-full h-80 object-cover object-center "
           />
-          <div className="w-full h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70">
-            <div className="w-full h-full flex justify-center items-center flex-col">
-              <h1 className="text-5xl text-center font-bold p-4 text-white">
-                Home Loans
-              </h1>
-              <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
-            </div>
+          <div className="w-full h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70"></div>
+          <div className="w-full h-full absolute z-20 inset-0 flex justify-center items-center flex-col">
+            <h1 className="text-4xl md:text-5xl text-center font-bold p-4 text-white">
+              Home Loans
+            </h1>
+            <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
           </div>
         </div>
       ) : null}
@@ -59,7 +58,13 @@ export default function HomeLoanPage() {
         </div>
       </div>
 
-      <PhotoAndCards />
+      <PhotoAndCards
+        Cards={CardsForHomeLoans}
+        Style={`pt-16 pb-24 gap-20 md:gap-0 md:space-x-6 container mx-auto p-7 md:p-10`}
+        CardImageStyle={`w-full h-96 md:w-96 md:h-96 object-cover object-center rounded-lg`}
+        CardTextStyle={`h-64 `}
+        ParentDivStyle={`max-md:-bottom-10 max-md:hover:bottom-0 top-[40%] hover:top-[35%] inset-x-0 mx-auto`}
+      />
       <PersonsWithKey />
     </div>
   );

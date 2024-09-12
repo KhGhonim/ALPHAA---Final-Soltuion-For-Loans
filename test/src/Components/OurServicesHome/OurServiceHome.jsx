@@ -46,14 +46,13 @@ export default function OurServiceHome({
             alt="Services Banner"
             className="w-full h-80 object-cover object-center "
           />
-          <div className="w-full h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70">
-            <div className="w-full h-full flex justify-center items-center flex-col">
+          <div className="w-full h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70"></div>
+          <div className="w-full h-full absolute z-30 inset-0 flex justify-center items-center flex-col">
               <h1 className="text-5xl text-center font-bold p-4 text-white">
                 {ServiceTitle}
               </h1>
               <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
             </div>
-          </div>
         </div>
       ) : null}
       <div className="flex flex-col items-center mt-16">

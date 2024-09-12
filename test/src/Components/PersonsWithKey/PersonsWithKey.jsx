@@ -3,7 +3,7 @@ import CallToAction from "../../Components/CallToAction/CallToAction";
 import GuysWITHKEYS from "../../assets/GuysWITHKEYS.jpg";
 export default function PersonsWithKey() {
   return (
-    <div className=" bg-[#F5F5F5] mb-32 pb-96 md:pb-28    relative">
+    <div className=" bg-[#F5F5F5] mb-32 pb-[480px] md:pb-28 mt-10    relative">
       <div className="flex flex-col-reverse  md:p-20 md:flex-row gap-3 h-full md:h-dvh container mx-auto rounded-lg ">
         <div className="w-full md:w-2/5 max-md:p-7 max-md:py-9">
           <img
