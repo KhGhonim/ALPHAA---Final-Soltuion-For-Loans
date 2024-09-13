@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 // @ts-ignore
 import homeloans from "../../../assets/homeloans.jpg";
 // @ts-ignore
-import Asians from "../../../assets/Home-family.webp";
+import Asians from "../../../assets/outdoor-portrait-of-cheerful-indian-family-sitting-withmorelight.jpg";
 import Lottie from "lottie-react";
 import Arrow from "../../../assets/Arrow.json";
 import { useState, useRef, useEffect } from "react";
@@ -10,12 +11,50 @@ import CallToAction from "../../../Components/CallToAction/CallToAction";
 import HouseRoof from "../../../assets/secoundroof3.png";
 import PhotoAndCards from "../../../Components/PhotoAndCards/PhotoAndCards";
 import { CardsForRefinancing } from "../../../constants/db";
+import { Helmet } from "react-helmet-async";
+import { motion, useInView } from "framer-motion";
+const ComingFromDown = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
 
+const parentVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+
+      duration: 1.5,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "easeInOut", stiffness: 100, damping: 10 },
+  },
+};
 export default function CommercialLoanPage() {
   const [sliderHeight, setSliderHeight] = useState(0);
   const [height, setHeight] = useState("auto");
   const cardsRef = useRef(null);
-
+  const Ref3 = useRef(null);
+  const isInView3 = useInView(Ref3, { once: true });
   /**
    * This useEffect hook is used to set the height of the slider based on the
    * height of the cards container. The height of the cards container is
@@ -48,6 +87,9 @@ export default function CommercialLoanPage() {
 
   return (
     <div className="flex flex-col  h-full  bg-[#F5F5F5] font-cairo   pb-[530px] md:pb-20    relative">
+      <Helmet>
+        <title>Commercial Loan - AlPHAA Financial Solutions</title>
+      </Helmet>
       <h1 className="text-4xl md:text-5xl md:ml-28 font-bold p-4 ">
         Commercial Loan
       </h1>
@@ -60,16 +102,29 @@ export default function CommercialLoanPage() {
         />
         <div className="w-full  h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70"></div>
         <div className="w-full absolute z-20 inset-0  h-full flex justify-center items-center flex-col">
-          <h1 className="text-5xl text-center font-bold p-4 text-white">
-            Commercial Loan
-          </h1>
+          <motion.div
+            variants={ComingFromDown}
+            initial="hidden"
+            animate="visible"
+          >
+            <h1 className="text-5xl text-center font-bold p-4 text-white">
+              Commercial Loan
+            </h1>
+          </motion.div>
           <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
         </div>
       </div>
 
       <section className="bg-white pt-16 py-28 max-md:px-2">
-        <div className="container p-5 mx-auto flex flex-col-reverse lg:flex-row gap-12">
-          <div
+        <motion.div
+          variants={parentVariants}
+          initial="hidden"
+          ref={Ref3}
+          animate={isInView3 ? "visible" : "hidden"}
+          className="container p-5 mx-auto flex flex-col-reverse lg:flex-row gap-12"
+        >
+          <motion.div
+            variants={childVariants}
             className={`w-full  lg:w-2/5 rounded-2xl`}
             style={{
               backgroundImage: `url(${Asians})`,
@@ -78,9 +133,9 @@ export default function CommercialLoanPage() {
               backgroundSize: "cover",
               height: height,
             }}
-          ></div>
+          ></motion.div>
 
-          <div ref={cardsRef} className="lg:w-3/5 h-full  space-y-8 ">
+          <motion.div variants={childVariants} ref={cardsRef} className="lg:w-3/5 h-full  space-y-8 ">
             <div className="space-y-4">
               <div className="flex flex-col md:flex-row gap-2  mb-4">
                 <div className="w-10 h-7 bg-orange-400 "></div>
@@ -153,8 +208,8 @@ export default function CommercialLoanPage() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <CallToAction />
       </section>

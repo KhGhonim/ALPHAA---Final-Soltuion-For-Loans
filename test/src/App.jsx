@@ -10,7 +10,6 @@ function App() {
       <FixedHeader />
       <Header />
       <Outlet />
-  
       <QuickContact />
       <Footer />
     </>

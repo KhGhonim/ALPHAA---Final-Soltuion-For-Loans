@@ -18,8 +18,8 @@ const parentVariants = {
 
 export default function OurMissionOurStory() {
   return (
-    <section className="border-t-8 border-orange-400 bg-[#2A2C38]  max-md:pb-16 max-md:pt-8 max-md:px-6 md:p-16 h-full  md:h-96 ">
-      <div className="flex container mx-auto  flex-col md:flex-row gap-6">
+    <section className="border-t-8 border-orange-400 bg-[#2A2C38]  max-md:pb-16 max-md:pt-8 max-md:px-6 md:p-16 h-full   ">
+      <div className="flex container mx-auto h-full  flex-col lg:flex-row gap-6">
         <motion.div
           variants={parentVariants}
           initial="hidden"

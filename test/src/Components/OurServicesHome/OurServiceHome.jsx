@@ -10,7 +10,20 @@ import SliderPhone from "./SliderPhone";
 import { useLocation } from "react-router-dom";
 import Lottie from "lottie-react";
 import Arrow from "../../assets/Arrow.json";
-
+import { motion } from "framer-motion";
+const ComingFromDown = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
 export default function OurServiceHome({
   Title,
   Description,
@@ -37,7 +50,7 @@ export default function OurServiceHome({
   }, []);
 
   return (
-    <div className="flex flex-col  h-full  bg-[#F5F5F5] font-cairo">
+    <div className="flex flex-col  h-full pb-6 bg-[#F5F5F5] font-cairo">
       <h1 className="text-5xl md:ml-28 font-bold p-4 ">{Title}</h1>
       {location.pathname === "/services" ? (
         <div className="w-full relative">
@@ -48,14 +61,20 @@ export default function OurServiceHome({
           />
           <div className="w-full h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70"></div>
           <div className="w-full h-full absolute z-30 inset-0 flex justify-center items-center flex-col">
+            <motion.div
+              variants={ComingFromDown}
+              initial="hidden"
+              animate="visible"
+            >
               <h1 className="text-5xl text-center font-bold p-4 text-white">
                 {ServiceTitle}
               </h1>
-              <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
-            </div>
+            </motion.div>
+            <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
+          </div>
         </div>
       ) : null}
-      <div className="flex flex-col items-center mt-16">
+      <div className="flex flex-col items-center mt-8">
         <div
           className="w-24 h-24 bg-orange-500"
           style={{
@@ -71,8 +90,10 @@ export default function OurServiceHome({
         ></div>
         <div className="flex flex-col items-center container capitalize w-4/6">
           <h6
-            className={`text-lg text-center ${
-              location.pathname === "/services" ? "py-4" : ""
+            className={` text-center ${
+              location.pathname === "/services"
+                ? "py-4 text-lg"
+                : "text-4xl pt-4"
             }  font-bold `}
           >
             {Subtitle}
@@ -82,7 +103,7 @@ export default function OurServiceHome({
         </div>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row p-9 justify-between items-start md:container gap-6 md:mx-auto h-full mb-10  mt-20 max-md:p-1 font-cairo">
+      <div className="w-full flex max-md:flex-col lg:flex-row  justify-between items-start lg:container gap-6 lg:mx-auto h-full mb-10  mt-20 max-lg:p-3 font-cairo">
         {/* First Card */}
         <div
           ref={cardsRef}
@@ -99,15 +120,14 @@ export default function OurServiceHome({
           ))}
         </div>
 
-        {/* Phone Slider */}
-        <div className="block md:hidden mt-7 w-full h-96  rounded-3xl font-cairo ">
-          <SliderPhone />
-        </div>
-
         {/* Photo Slider */}
-        <div className="hidden lg:block md:w-2/6 h-full px-6 rounded-3xl font-cairo ">
+        <div className="hidden lg:block lg:w-2/6 h-full px-6 rounded-3xl font-cairo ">
           <ServiceSlider height={sliderHeight} />
         </div>
+      </div>
+      {/* Phone Slider */}
+      <div className="block lg:hidden mt-7 w-full h-96 rounded-3xl p-3 font-cairo ">
+        <SliderPhone />
       </div>
     </div>
   );

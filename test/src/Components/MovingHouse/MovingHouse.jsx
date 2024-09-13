@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import family2 from "../../assets/family2.jpg";
 import HOUSE from "../../assets/Minihome.png";
+import { useRef } from "react";
 
 const parentVariants = {
   hidden: { opacity: 0, x: -1000 },
@@ -32,27 +33,41 @@ const parentVariants2 = {
   },
 };
 
-
 export default function MovingHouse() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <div className="relative w-full pt-16 overflow-hidden  bg-white ">
-      <div className=" md:container md:mx-auto flex flex-col md:flex-row gap-7 p-5 justify-between md:py-24 md:px-36 relative">
-        <div className="w-full md:w-2/3 h-96 flex   p-4 rounded-3xl">
+    <div className="relative w-full overflow-hidden  bg-white ">
+      <div className="  flex flex-col lg:flex-row max-lg:gap-24 p-5  lg:gap-16 lg:py-20 lg:px-36 relative">
+        <div
+          ref={ref}
+          className="w-full lg:w-3/6 h-80 mt-3 flex border-r-8 border-b-8 border-[#F5F5F5] items-center justify-center  rounded-3xl"
+        >
           <img
             src={family2}
             alt="Family Playing Together"
-            className="w-full h-72 md:h-full object-cover rounded-3xl border-r-8 border-b-8 border-[#F5F5F5]"
+            className="w-full h-full object-cover  rounded-3xl "
           />
-          <motion.div variants={parentVariants} initial="hidden" animate="visible"  className="absolute bottom-14 md:bottom-6 left-4 md:left-20 flex items-center justify-center z-20">
-            <img
-              alt="House Icon"
-              src={HOUSE}
-              className="w-56 h-32 md:w-96 md:h-56"
-            />
-          </motion.div>
         </div>
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={parentVariants}
+          className="absolute bottom-16 lg:bottom-3 left-4 lg:left-20 flex items-center justify-center z-20"
+        >
+          <img
+            alt="House Icon"
+            src={HOUSE}
+            className="w-52 h-32 lg:w-96 lg:h-52"
+          />
+        </motion.div>
 
-        <motion.div variants={parentVariants2} initial="hidden" animate="visible" className="w-full h-full md:h-96 md:w-1/2 bg-[#F5F5F5] rounded-3xl"></motion.div>
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={parentVariants2}
+          className="w-full h-20 lg:h-80 lg:w-2/5 bg-[#F5F5F5] rounded-3xl"
+        ></motion.div>
       </div>
     </div>
   );

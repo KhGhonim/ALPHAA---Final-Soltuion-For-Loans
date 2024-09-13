@@ -1,18 +1,62 @@
 // @ts-ignore
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import CallToAction from "../../Components/CallToAction/CallToAction";
 import GuysWITHKEYS from "../../assets/GuysWITHKEYS.jpg";
+
+const parentVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "easeInOut", stiffness: 100, damping: 10 },
+  },
+};
+
 export default function PersonsWithKey() {
+  const Ref3 = useRef(null);
+  const isInView3 = useInView(Ref3, { once: true });
+
   return (
-    <div className=" bg-[#F5F5F5] mb-32 pb-[480px] md:pb-28 mt-10    relative">
-      <div className="flex flex-col-reverse  md:p-20 md:flex-row gap-3 h-full md:h-dvh container mx-auto rounded-lg ">
-        <div className="w-full md:w-2/5 max-md:p-7 max-md:py-9">
+    <div
+      ref={Ref3}
+      className=" bg-[#F5F5F5] mb-32 pb-[480px] md:pb-28 mt-10    relative"
+    >
+      <motion.div
+        variants={parentVariants}
+        initial="hidden"
+        animate={isInView3 ? "visible" : "hidden"}
+        className="flex flex-col-reverse  md:p-20 md:flex-row gap-3 h-full md:h-dvh container mx-auto rounded-lg "
+      >
+        <motion.div
+          variants={childVariants}
+          className="w-full md:w-2/5 max-md:p-7 max-md:py-9"
+        >
           <img
             src={GuysWITHKEYS}
             alt="Home loan celebration"
             className="w-full h-full rounded-lg object-cover"
           />
-        </div>
-        <div className="md:w-4/6  pt-16 p-9 md:p-9">
+        </motion.div>
+        <motion.div
+          variants={childVariants}
+          className="md:w-4/6  pt-16 p-9 md:p-9"
+        >
           <div className="flex gap-2 items-center mb-4">
             <div className="w-10 h-7 bg-orange-400 "></div>
             <h2 className="text-[#2A2C38] font-bold text-base ">
@@ -61,8 +105,8 @@ export default function PersonsWithKey() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       <CallToAction />
     </div>

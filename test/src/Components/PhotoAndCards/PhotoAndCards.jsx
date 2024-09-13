@@ -1,3 +1,28 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+const parentVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      duration: 1.5,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 10 },
+  },
+};
+
 export default function PhotoAndCards({
   Cards,
   Style,
@@ -5,13 +30,23 @@ export default function PhotoAndCards({
   CardTextStyle,
   ParentDivStyle,
 }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <div
+    <motion.div
+      variants={parentVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      ref={ref}
       className={`flex flex-col md:flex-row justify-center ${Style} font-cairo`}
     >
       {Cards.map((card, index) => {
         return (
-          <div key={index} className="relative  w-full md:w-1/3 group">
+          <motion.div
+            variants={childVariants}
+            key={index}
+            className="relative  w-full md:w-1/3 group"
+          >
             <img
               src={card.image}
               alt="First Home Buyer"
@@ -31,9 +66,9 @@ export default function PhotoAndCards({
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 }

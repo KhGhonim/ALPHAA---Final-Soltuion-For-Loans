@@ -5,12 +5,12 @@ import { FaWordpress } from "react-icons/fa";
 import { FaViber } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
+// @ts-ignore
 import callcenter from "../../assets/close-up-person-working-call-center-1024x683.jpg";
 import { Link } from "react-router-dom";
 import { FaClock } from "react-icons/fa";
-import { motion } from "framer-motion";
-
-
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const parentVariants2 = {
   hidden: { opacity: 0, y: 1000 },
@@ -27,12 +27,21 @@ const parentVariants2 = {
   },
 };
 
-
 export default function ContactUs() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
     <div className="pt-36 pb-16 px-5 bg-white font-cairo overflow-hidden">
-      <div className=" flex justify-between gap-8 items-center container mx-auto flex-col md:flex-row">
-        <motion.div variants={parentVariants2} initial="hidden" animate="visible" className=" w-full md:w-1/3 flex flex-col">
+      <div
+        ref={ref}
+        className=" flex justify-between gap-8 items-center container mx-auto flex-col md:flex-row"
+      >
+        <motion.div
+          variants={parentVariants2}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className=" w-full md:w-1/3 flex flex-col"
+        >
           <h2 className="text-4xl font-bold text-primary">Contact Us</h2>
           <p className="text-zinc-600 text-base py-5">
             Please feel free to ask if you have any further questions.
@@ -101,7 +110,12 @@ export default function ContactUs() {
           </div>
         </motion.div>
 
-        <motion.div variants={parentVariants2} initial="hidden" animate="visible" className="flex justify-end">
+        <motion.div
+          variants={parentVariants2}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="flex justify-end"
+        >
           <img
             alt="Contact Phone"
             src={callcenter}

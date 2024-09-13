@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 // @ts-ignore
 import bg from "../../assets/Pawnbg.jpg";
 import { useLocation } from "react-router-dom";
+import { useRef } from "react";
 
 const parentVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -31,6 +32,8 @@ const childVariants = {
 
 export default function PAWAN({ photo }) {
   const location = useLocation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
     <div
       style={{
@@ -55,7 +58,7 @@ export default function PAWAN({ photo }) {
       <div className="absolute inset-0 bg-gradient-to-l from-orange-400 to-orange-500 opacity-50 z-10"></div>
 
       {/* Content */}
-      <div className="relative z-50 space-y-4 flex justify-center items-center flex-col">
+      <div ref={ref} className="relative z-50 space-y-4 flex justify-center items-center flex-col">
         <div className="flex justify-center">
           {location.pathname === "/about-us" ? (
             <div className="w-16 h-16 bg-[#2A2C38] mb-4" />
@@ -67,7 +70,7 @@ export default function PAWAN({ photo }) {
         <motion.div
           variants={parentVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
         >
           <motion.h1
             variants={childVariants}
@@ -81,7 +84,7 @@ export default function PAWAN({ photo }) {
         <motion.div
           variants={parentVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
           className="bg-white cursor-pointer  z-50 hover:!scale-110 w-44 text-black max-md:w-full font-bold py-5 px-8 rounded-lg shadow-lg transition-all duration-300"
         >
           <motion.button className="z-50" variants={childVariants}>

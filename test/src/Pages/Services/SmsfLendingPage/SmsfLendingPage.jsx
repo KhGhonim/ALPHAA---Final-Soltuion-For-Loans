@@ -10,11 +10,51 @@ import CallToAction from "../../../Components/CallToAction/CallToAction";
 import HouseRoof from "../../../assets/secoundroof3.png";
 import PhotoAndCards from "../../../Components/PhotoAndCards/PhotoAndCards";
 import { CardsForRefinancing } from "../../../constants/db";
+import { Helmet } from "react-helmet-async";
+import { motion, useInView } from "framer-motion";
+const ComingFromDown = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
 
+const parentVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+
+      duration: 1.5,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "easeInOut", stiffness: 100, damping: 10 },
+  },
+};
 export default function SmsfLendingPage() {
   const [sliderHeight, setSliderHeight] = useState(0);
   const [height, setHeight] = useState("auto");
   const cardsRef = useRef(null);
+
+  const Ref3 = useRef(null);
+  const isInView3 = useInView(Ref3, { once: true });
 
   /**
    * This useEffect hook is used to set the height of the slider based on the
@@ -48,6 +88,11 @@ export default function SmsfLendingPage() {
 
   return (
     <div className="flex flex-col  h-full  bg-white font-cairo   pb-[30px] md:pb-20    relative">
+      <Helmet>
+        <title>
+          Self-Managed Super Fund (SMSF) Lending - AlPHAA Financial Solutions
+        </title>
+      </Helmet>
       <h1 className="text-4xl bg-[#F5F5F5] md:text-5xl md:pl-28 font-bold p-4 ">
         Self-Managed Super Fund (SMSF) Lending
       </h1>
@@ -60,16 +105,29 @@ export default function SmsfLendingPage() {
         />
         <div className="w-full  h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70"></div>
         <div className="w-full absolute z-20 inset-0  h-full flex justify-center items-center flex-col">
-          <h1 className="text-4xl md:text-5xl  text-center font-bold p-9 text-white">
-            Self-Managed Super Fund (SMSF) Lending
-          </h1>
+          <motion.div
+            variants={ComingFromDown}
+            initial="hidden"
+            animate="visible"
+          >
+            <h1 className="text-4xl md:text-5xl  text-center font-bold p-9 text-white">
+              Self-Managed Super Fund (SMSF) Lending
+            </h1>
+          </motion.div>
           <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
         </div>
       </div>
 
       <section className="bg-[#F5F5F5] pt-16 py-28 max-md:px-2">
-        <div className="container p-5 mx-auto flex flex-col-reverse lg:flex-row gap-12">
-          <div
+        <motion.div
+          variants={parentVariants}
+          initial="hidden"
+          animate={isInView3 ? "visible" : "hidden"}
+          ref={Ref3}
+          className="container p-5 mx-auto flex flex-col-reverse lg:flex-row gap-12"
+        >
+          <motion.div
+            variants={childVariants}
             className={`w-full  lg:w-2/5 rounded-2xl`}
             style={{
               backgroundImage: `url(${Asians})`,
@@ -78,9 +136,13 @@ export default function SmsfLendingPage() {
               backgroundSize: "cover",
               height: height,
             }}
-          ></div>
+          ></motion.div>
 
-          <div ref={cardsRef} className="lg:w-3/5 h-full  space-y-8 ">
+          <motion.div
+            variants={childVariants}
+            ref={cardsRef}
+            className="lg:w-3/5 h-full  space-y-8 "
+          >
             <div className="space-y-1 mb-2 p-1">
               <h2 className="text-3xl pr-1  capitalize font-bold mb-3 text-gray-800">
                 Maximize Your Retirement Savings with Alphaa Financial
@@ -148,8 +210,8 @@ export default function SmsfLendingPage() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <CallToAction />
       </section>

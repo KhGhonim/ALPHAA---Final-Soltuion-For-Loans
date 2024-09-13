@@ -42,7 +42,7 @@ export default function Slider() {
       }}
       onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
       modules={[Autoplay, EffectFade, Navigation]}
-      className="mySwiper h-dvh border-b-[15px] border-t-[13px] border-[#F5F5F5] relative"
+      className="mySwiper h-dvh border-b-[15px] border-t-[13px] border-[#F5F5F5] relative "
     >
       {HomeSlider.map((slide, index) => (
         <SwiperSlide key={index}>
@@ -56,10 +56,14 @@ export default function Slider() {
             variants={parentVariants}
             initial="hidden"
             animate="visible"
-            className="absolute right-0 bottom-1/2 md:top-1/2 translate-y-1/2 container mx-auto mb-4 left-0 z-40 text-white text-center"
+            className="absolute max-lg:px-7 max-w-6xl right-0 left-0 top-[45%] space-y-3  lg:space-y-16  container mx-auto  z-40 text-white text-center"
           >
-            <h1 className="text-2xl md:text-7xl font-bold">{slide.text}</h1>
-            <p className="text-sm md:text-base">{slide.subtitle}</p>
+            <h1 className="text-2xl md:text-7xl calistoga-regular  font-bold">
+              {slide.text}
+            </h1>
+            <p className="text-xs md:text-lg roboto-regular ">
+              {slide.subtitle}
+            </p>
           </motion.div>
         </SwiperSlide>
       ))}

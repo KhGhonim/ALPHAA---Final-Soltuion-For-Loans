@@ -6,11 +6,16 @@ import Lenders from "../../Components/Lenders/Lenders";
 import MovingHouse from "../../Components/MovingHouse/MovingHouse";
 import OurMissionOurStory from "../../Components/OurMission&OurStory/OurMissionOurStory";
 import OurServiceHome from "../../Components/OurServicesHome/OurServiceHome";
+// @ts-ignore
 import man from "../../assets/img-icon-02-1.png";
+import { Helmet } from "react-helmet-async";
 
 export default function Home() {
   return (
     <div className="font-cairo">
+      <Helmet>
+        <title>AlPHAA Financial Solutions</title>
+      </Helmet>
       <Slider />
       <OurMissionOurStory />
       <OurServiceHome

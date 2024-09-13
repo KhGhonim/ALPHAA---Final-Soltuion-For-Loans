@@ -29,14 +29,18 @@ export default function Header() {
   useEffect(() => {
     setstate(location);
   }, [location]);
-          
+
   return (
     <>
       {/* PC HEADER */}
-      <header className="hidden lg:block bg-white p-4 font-cairo">
+      <header className="hidden lg:block bg-white p-2 font-cairo">
         <div className="w-10/12 flex justify-between items-center container mx-auto">
           <Link to="/" className="flex items-center ">
-            <img alt="logo" src={Logo} className=" w-full h-16 object-cover" />
+            <img
+              alt="logo"
+              src={Logo}
+              className=" w-full h-20 pl-44 object-cover"
+            />
           </Link>
           <nav className="space-x-1 flex justify-center items-center">
             <Link
@@ -76,18 +80,20 @@ export default function Header() {
               </Link>
 
               {/* Dropdown List */}
-              <ul className="absolute  top-16 left-0 z-50 w-72 hidden group-hover:block bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out">
+              <ul className="absolute  top-16 left-0 z-50 w-80 hidden group-hover:block bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out">
                 {HeaderData[2].subMenu.map((list, index) => {
                   return (
                     <li key={index} className="w-full">
                       <Link
                         to={list.link}
-                        className={`block w-full hover:text-white hover:bg-[#22232D] py-5 px-5 text-xs ${
+                        className={`block w-full hover:text-white hover:bg-[#22232D] py-5 px-4 text-sm font-bold ${
                           state.pathname === list.link
                             ? "bg-orange-400"
                             : " hover:text-white hover:bg-[#22232D]"
                         } ${
-                          index !== HeaderData.length - 1 ? "border-b-2" : ""
+                          index !== HeaderData[2].subMenu.length - 1
+                            ? "border-b-2"
+                            : ""
                         } `}
                       >
                         {list.name}
@@ -201,17 +207,13 @@ export default function Header() {
       </header>
 
       {/* MOBILE HEADER */}
-      <header className="block md:hidden bg-white p-4 font-cairo">
+      <header className="block md:hidden bg-white p-5 font-cairo">
         <div className="w-full flex flex-col ">
           <Link
             to="/"
             className="w-full flex justify-center items-center container mx-auto "
           >
-            <img
-              alt="logo"
-              src={Logo}
-              className=" w-full h-20 object-contain"
-            />
+            <img alt="logo" src={Logo} className="w-auto h-16 object-cover" />
           </Link>
           <nav className="space-y-1 ">
             <div className="w-16 text-3xl flex justify-center items-center font-bold my-7">

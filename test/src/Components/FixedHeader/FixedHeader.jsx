@@ -5,8 +5,8 @@ import { FaClock } from "react-icons/fa";
 
 export default function FixedHeader() {
   return (
-    <div className=" w-full bg-[--DarkBGAndText] text-[#EEEBEA] shadow-md p-4 flex  items-center z-50 font-cairo">
-      <div className=" w-10/12 flex justify-center md:justify-end flex-wrap   items-center space-x-3 container mx-auto">
+    <div className=" w-full bg-[--DarkBGAndText] text-[#EEEBEA] shadow-md p-5 flex  items-center z-50 font-cairo">
+      <div className=" w-10/12 leading-relaxed flex justify-center md:justify-end flex-wrap   items-center space-y-1 space-x-3 container mx-auto">
         <div className="flex items-center gap-2">
           <span className="text-orange-500">
             <FaLocationDot />

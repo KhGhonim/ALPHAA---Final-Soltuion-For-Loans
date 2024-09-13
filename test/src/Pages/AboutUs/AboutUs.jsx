@@ -12,24 +12,110 @@ import whitboiy from "../../assets/whitboiy.jpg";
 import yasli from "../../assets/yasli.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
 import { EffectFade } from "swiper/modules";
 import "swiper/css/effect-fade";
 import { ServicesHomeSlider } from "../../constants/db";
 import AboutUsSlider from "./AboutUsSlider";
 import { Helmet } from "react-helmet-async";
 import PAWAN from "../../Components/PAWAN/PAWAN";
-
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const photos = [blackboy, whitboiy, yasli];
+
+const ComingFromDown = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
+
+const ComingFromLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
+
+const ComingFromRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
+
+const parentVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+      duration: 1.5,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 10 },
+  },
+};
+
+const ComingFromDownSliders = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
+
 export default function AboutUs() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const Ref2 = useRef(null);
+  const isInView2 = useInView(Ref2, { once: true });
+  const Ref3 = useRef(null);
+  const isInView3 = useInView(Ref3, { once: true });
   return (
-    <div className="w-full h-full bg-[#F5F5F5] font-cairo ">
-           <Helmet>
+    <div className="w-full h-full bg-[#F5F5F5] font-cairo overflow-hidden">
+      <Helmet>
         <title>About Us - AlPHAA Financial Solutions</title>
-        
       </Helmet>
-      <div className="container mx-auto w-full mb-10">
+      <div ref={ref} className="container mx-auto w-full mb-10">
         <h1 className="text-5xl ml-24 font-bold p-4 ">About Us</h1>
 
         <div className="flex justify-center items-center">
@@ -47,14 +133,24 @@ export default function AboutUs() {
             }}
           ></div>
         </div>
-        <div className="flex justify-center items-center pb-4 ">
+        <motion.div
+          variants={ComingFromDown}
+          initial="hidden"
+          animate="visible"
+          className="flex justify-center items-center pb-4 "
+        >
           <h1 className="text-4xl font-bold capitalize  text-center">
             We believe you’re bright
           </h1>
-        </div>
+        </motion.div>
 
         <div className="flex justify-center items-center flex-col md:flex-row gap-10 py-10  px-5 md:p-10">
-          <div className="w-full md:w-1/2 flex flex-col">
+          <motion.div
+            variants={ComingFromLeft}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="w-full md:w-1/2 flex flex-col"
+          >
             <img
               src={about}
               alt="Family"
@@ -72,8 +168,13 @@ export default function AboutUs() {
               as possible, guiding you through every step with transparency and
               integrity.
             </p>
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col">
+          </motion.div>
+          <motion.div
+            variants={ComingFromRight}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="w-full md:w-1/2 flex flex-col"
+          >
             <h1 className="text-xl font-bold text-[#2A2C38] my-8">
               Welcome to Alphaa Financial Solutions
             </h1>
@@ -102,13 +203,22 @@ export default function AboutUs() {
               innovation. Financial Solutions was born out of a desire to
               simplify the complexities of property financing. Our founder,
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       <div className="w-full h-full   bg-[#2A2C38]">
-        <div className="px-3 md:container md:mx-auto py-10 flex flex-col-reverse md:flex-row gap-7 md:gap-3 justify-center items-center">
-          <div className="w-full md:w-1/2  h-full flex justify-center items-center">
+        <motion.div
+          ref={Ref2}
+          variants={parentVariants}
+          initial="hidden"
+          animate={isInView2 ? "visible" : "hidden"}
+          className="px-3 md:container md:mx-auto py-10 flex flex-col-reverse md:flex-row gap-7 md:gap-3 justify-center items-center"
+        >
+          <motion.div
+            variants={childVariants}
+            className="w-full md:w-1/2  h-full flex justify-center items-center"
+          >
             <Swiper
               effect={"fade"}
               loop={true}
@@ -129,9 +239,12 @@ export default function AboutUs() {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
 
-          <div className="w-full md:w-1/2  h-full flex flex-col py-8 md:py-20 md:px-10">
+          <motion.div
+            variants={childVariants}
+            className="w-full md:w-1/2  h-full flex flex-col py-8 md:py-20 md:px-10"
+          >
             <div className="flex items-center gap-3">
               <div
                 className="w-10 h-10 bg-orange-500  "
@@ -173,12 +286,18 @@ export default function AboutUs() {
                 dealings.
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       <div className="w-full h-full bg-[#F5F5F5]">
-        <div className="w-full md:container md:mx-auto pt-10 flex  justify-center gap-7">
+        <motion.div
+          variants={ComingFromDownSliders}
+          initial="hidden"
+          animate={isInView3 ? "visible" : "hidden"}
+          ref={Ref3}
+          className="w-full md:container md:mx-auto pt-10 flex  justify-center gap-7"
+        >
           {photos.map((item, index) => (
             <img
               key={index}
@@ -187,15 +306,15 @@ export default function AboutUs() {
               alt={`Slide ${index}`}
             />
           ))}
-        </div>
+        </motion.div>
 
         <div>
           <div className="flex justify-center">
-            <AboutUsSlider />
+            <AboutUsSlider ComingFromDownSliders={ComingFromDownSliders} />
           </div>
         </div>
       </div>
-      <PAWAN photo={whitboiy } />
+      <PAWAN photo={whitboiy} />
     </div>
   );
 }

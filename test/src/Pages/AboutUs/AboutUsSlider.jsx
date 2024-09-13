@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import {  useState } from "react";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
 const testimonials = [
   {
@@ -20,11 +21,18 @@ const testimonials = [
   },
 ];
 
-export default function AboutUsSlider() {
+export default function AboutUsSlider({ ComingFromDownSliders }) {
   const [CurrentSlider, setCurrentSlider] = useState(0);
-
+  const Ref2 = useRef(null);
+  const isInView2 = useInView(Ref2, { once: true });
   return (
-    <div className="w-full py-10">
+    <motion.div
+      ref={Ref2}
+      initial="hidden"
+      animate={isInView2 ? "visible" : "hidden"}
+      variants={ComingFromDownSliders}
+      className="w-full py-10"
+    >
       <Swiper
         spaceBetween={30}
         slidesPerView={1}
@@ -48,6 +56,6 @@ export default function AboutUsSlider() {
       <div className="flex justify-center items-center text-center text-sm text-black">
         {CurrentSlider + 1}/{testimonials.length}
       </div>
-    </div>
+    </motion.div>
   );
 }

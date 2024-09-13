@@ -7,10 +7,29 @@ import HouseRoof from "../../../assets/secoundroof3.png";
 import PhotoAndCards from "../../../Components/PhotoAndCards/PhotoAndCards";
 import PersonsWithKey from "../../../Components/PersonsWithKey/PersonsWithKey";
 import { CardsForHomeLoans } from "../../../constants/db";
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+const ComingFromDown = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
+
 
 export default function HomeLoanPage() {
   return (
     <div className="flex flex-col  h-full  bg-white font-cairo">
+      <Helmet>
+        <title>Home Loans - AlPHAA Financial Solutions</title>
+      </Helmet>
       <h1 className="text-4xl md:text-5xl md:ml-28 font-bold p-4 ">
         Home Loans
       </h1>
@@ -23,9 +42,15 @@ export default function HomeLoanPage() {
           />
           <div className="w-full h-80 absolute z-20 inset-0 bg-[#2A2C38] opacity-70"></div>
           <div className="w-full h-full absolute z-20 inset-0 flex justify-center items-center flex-col">
-            <h1 className="text-4xl md:text-5xl text-center font-bold p-4 text-white">
-              Home Loans
-            </h1>
+            <motion.div
+              variants={ComingFromDown}
+              initial="hidden"
+              animate="visible"
+            >
+              <h1 className="text-4xl md:text-5xl text-center font-bold p-4 text-white">
+                Home Loans
+              </h1>
+            </motion.div>
             <Lottie className="w-24 h-24" animationData={Arrow} loop={true} />
           </div>
         </div>
