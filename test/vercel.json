@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/faq", "destination": "/index.html" },
+    { "source": "/PERSONAL-LOAN", "destination": "/index.html" },
+    { "source": "/ASSET-FINANCE", "destination": "/index.html" },
+    { "source": "/COMMERCIAL-LOAN", "destination": "/index.html" },
+    { "source": "/REFINANCING/:personId", "destination": "/index.html" },
+    { "source": "/FIRST-HOME-BUYER", "destination": "/index.html" },
+    { "source": "/HOME-LOAN", "destination": "/index.html" },
+    { "source": "/services", "destination": "/index.html" },
+    { "source": "/about-us", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
