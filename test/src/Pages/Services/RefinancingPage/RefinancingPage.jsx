@@ -87,11 +87,11 @@ export default function RefinancingPage() {
   }, [sliderHeight]);
 
   return (
-    <div className="flex flex-col  h-full  bg-white font-cairo   pb-[530px] md:pb-40    relative">
+    <div className="flex flex-col  h-full  bg-white font-cairo  pb-[30px] md:pb-20    relative">
       <Helmet>
         <title>Refinancing - AlPHAA Financial Solutions</title>
       </Helmet>
-      <h1 className="text-4xl md:text-5xl md:ml-28 font-bold p-4 ">
+      <h1 className="text-4xl bg-[#F5F5F5] md:text-5xl md:pl-24 font-bold p-4  ">
         Refinancing
       </h1>
 
@@ -116,7 +116,7 @@ export default function RefinancingPage() {
         </div>
       </div>
 
-      <section className="bg-[#F5F5F5] py-28 ">
+      <section className="bg-[#F5F5F5] pt-16 md:pb-60 lg:pb-0 ">
         <motion.div
           variants={parentVariants}
           initial="hidden"
@@ -126,7 +126,7 @@ export default function RefinancingPage() {
         >
           <motion.div
             variants={childVariants}
-            className={`w-full  lg:w-2/5 rounded-2xl`}
+            className={`w-full h-full  lg:w-2/5 rounded-2xl`}
             style={{
               backgroundImage: `url(${Asians})`,
               backgroundPosition: "center center",
@@ -141,7 +141,7 @@ export default function RefinancingPage() {
             ref={cardsRef}
             className="lg:w-3/5 h-full  space-y-8 "
           >
-            <h2 className="text-5xl font-bold text-gray-800">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
               Refinancing at Alpha Financial Solutions{" "}
             </h2>
             <p className="text-[#585860] leading-relaxed text-lg">
@@ -234,10 +234,10 @@ export default function RefinancingPage() {
 
       <PhotoAndCards
         Cards={CardsForRefinancing}
-        Style={`pt-16 pb-24 gap-24 md:gap-0 md:space-x-6 container mx-auto p-7 md:p-10`}
-        CardImageStyle={`w-full h-80 md:w-96   object-cover object-center rounded-lg`}
-        CardTextStyle={`h-42 `}
-        ParentDivStyle={`top-[65%] hover:top-[60%] max-md:-bottom-10 max-md:hover:bottom-0  inset-x-0 mx-auto`}
+        Style={`pt-16 pb-24 gap-24 lg:gap-0 lg:space-x-6 container mx-auto p-7 lg:p-10`}
+        CardImageStyle={`w-full h-96 lg:w-96   object-cover object-center rounded-2xl`}
+        CardTextStyle={`md:h-32 text-center lg:h-64`}
+        ParentDivStyle={`top-[65%] hover:top-[60%] max-lg:-bottom-10 max-lg:hover:bottom-0  inset-x-0 mx-auto`}
       />
     </div>
   );

@@ -13,7 +13,7 @@ const parentVariants = {
       type: "easeInOut",
       stiffness: 100,
       damping: 10,
-      duration: 1,
+      duration: 1.3,
       staggerChildren: 0.3,
     },
   },
@@ -35,17 +35,17 @@ export default function PersonsWithKey() {
   return (
     <div
       ref={Ref3}
-      className=" bg-[#F5F5F5] mb-32 pb-[480px] md:pb-28 mt-10    relative"
+      className=" bg-[#F5F5F5] mb-32 pb-[30vh] lg:pb-28 mt-10    relative"
     >
       <motion.div
         variants={parentVariants}
         initial="hidden"
         animate={isInView3 ? "visible" : "hidden"}
-        className="flex flex-col-reverse  md:p-20 md:flex-row gap-3 h-full md:h-dvh container mx-auto rounded-lg "
+        className="flex flex-col-reverse  lg:p-20 lg:flex-row gap-3 h-full lg:h-dvh container mx-auto rounded-lg "
       >
         <motion.div
           variants={childVariants}
-          className="w-full md:w-2/5 max-md:p-7 max-md:py-9"
+          className="w-full lg:w-2/5 max-lg:p-7 max-lg:py-9"
         >
           <img
             src={GuysWITHKEYS}
@@ -55,7 +55,7 @@ export default function PersonsWithKey() {
         </motion.div>
         <motion.div
           variants={childVariants}
-          className="md:w-4/6  pt-16 p-9 md:p-9"
+          className="lg:w-4/6  pt-16 p-9 lg:p-9"
         >
           <div className="flex gap-2 items-center mb-4">
             <div className="w-10 h-7 bg-orange-400 "></div>
@@ -107,8 +107,9 @@ export default function PersonsWithKey() {
           </div>
         </motion.div>
       </motion.div>
-
-      <CallToAction />
+      <div className="relative">
+        <CallToAction />
+      </div>
     </div>
   );
 }

@@ -51,7 +51,7 @@ export default function OurServiceHome({
 
   return (
     <div className="flex flex-col  h-full pb-6 bg-[#F5F5F5] font-cairo">
-      <h1 className="text-5xl md:ml-28 font-bold p-4 ">{Title}</h1>
+      <h1 className="text-5xl md:pl-24 font-bold p-4 ">{Title}</h1>
       {location.pathname === "/services" ? (
         <div className="w-full relative">
           <img
@@ -88,7 +88,7 @@ export default function OurServiceHome({
             WebkitMaskRepeat: "no-repeat",
           }}
         ></div>
-        <div className="flex flex-col items-center container capitalize w-4/6">
+        <div className="flex flex-col items-center container capitalize w-5/6">
           <h6
             className={` text-center ${
               location.pathname === "/services"

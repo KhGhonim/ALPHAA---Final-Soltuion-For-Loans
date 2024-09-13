@@ -9,6 +9,7 @@ import PersonsWithKey from "../../../Components/PersonsWithKey/PersonsWithKey";
 import { CardsForHomeLoans } from "../../../constants/db";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import CallToAction from "../../../Components/CallToAction/CallToAction";
 const ComingFromDown = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -23,14 +24,13 @@ const ComingFromDown = {
   },
 };
 
-
 export default function HomeLoanPage() {
   return (
-    <div className="flex flex-col  h-full  bg-white font-cairo">
+    <div className="flex flex-col  h-full pb-0 md:pb-[10vh] lg:pb-0   bg-white font-cairo">
       <Helmet>
         <title>Home Loans - AlPHAA Financial Solutions</title>
       </Helmet>
-      <h1 className="text-4xl md:text-5xl md:ml-28 font-bold p-4 ">
+      <h1 className="text-4xl bg-[#F5F5F5] md:text-5xl md:pl-24 font-bold p-4  ">
         Home Loans
       </h1>
       {location.pathname === "/HOME-LOAN" ? (
@@ -85,12 +85,13 @@ export default function HomeLoanPage() {
 
       <PhotoAndCards
         Cards={CardsForHomeLoans}
-        Style={`pt-16 pb-24 gap-20 md:gap-0 md:space-x-6 container mx-auto p-7 md:p-10`}
-        CardImageStyle={`w-full h-96 md:w-96 md:h-96 object-cover object-center rounded-lg`}
-        CardTextStyle={`h-64 `}
-        ParentDivStyle={`max-md:-bottom-10 max-md:hover:bottom-0 top-[40%] hover:top-[35%] inset-x-0 mx-auto`}
+        Style={`pt-16 pb-24 gap-24 lg:gap-0 lg:space-x-6 container mx-auto p-7 lg:p-10`}
+        CardImageStyle={`w-full h-96 lg:w-96 lg:h-96 object-cover object-center rounded-2xl`}
+        CardTextStyle={`h-72 md:h-60 text-center lg:h-64`}
+        ParentDivStyle={`-bottom-10 text-center hover:bottom-0 top-[40%] hover:top-[35%] inset-x-0 mx-auto`}
       />
       <PersonsWithKey />
+    
     </div>
   );
 }

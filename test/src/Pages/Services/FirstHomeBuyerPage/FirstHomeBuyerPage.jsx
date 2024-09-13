@@ -84,12 +84,12 @@ export default function FirstHomeBuyerPage() {
   }, [sliderHeight]);
 
   return (
-    <div className="flex flex-col  h-full  bg-white font-cairo   pb-[530px] md:pb-40    relative">
+    <div className="flex flex-col  h-full  bg-white font-cairo   pb-[350px] md:pb-[300px] lg:pb-40    relative">
       <Helmet>
         <title>First Home Buyer - AlPHAA Financial Solutions</title>
       </Helmet>
-      <h1 className="text-4xl md:text-5xl md:ml-28 font-bold p-4 ">
-        Home Loans
+      <h1 className="text-4xl bg-[#F5F5F5] md:text-5xl md:pl-24 font-bold p-4 ">
+      First Home Buyer 
       </h1>
 
       <div className="w-full relative ">

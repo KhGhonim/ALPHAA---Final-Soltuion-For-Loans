@@ -12,7 +12,7 @@ import whitboiy from "../../assets/whitboiy.jpg";
 import yasli from "../../assets/yasli.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { EffectFade } from "swiper/modules";
+import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css/effect-fade";
 import { ServicesHomeSlider } from "../../constants/db";
 import AboutUsSlider from "./AboutUsSlider";
@@ -115,8 +115,8 @@ export default function AboutUs() {
       <Helmet>
         <title>About Us - AlPHAA Financial Solutions</title>
       </Helmet>
-      <div ref={ref} className="container mx-auto w-full mb-10">
-        <h1 className="text-5xl ml-24 font-bold p-4 ">About Us</h1>
+      <div className="container mx-auto w-full mb-10">
+        <h1 className="text-5xl md:pl-24 font-bold p-4 ">About Us</h1>
 
         <div className="flex justify-center items-center">
           <div
@@ -139,19 +139,20 @@ export default function AboutUs() {
           animate="visible"
           className="flex justify-center items-center pb-4 "
         >
-          <h1 className="text-4xl font-bold capitalize  text-center">
+          <h1 ref={ref} className="text-4xl font-bold capitalize  text-center">
             We believe you’re bright
           </h1>
         </motion.div>
 
-        <div className="flex justify-center items-center flex-col md:flex-row gap-10 py-10  px-5 md:p-10">
+        <div className="flex justify-center items-center flex-col lg:flex-row gap-10 lg:py-10  lg:px-5">
           <motion.div
             variants={ComingFromLeft}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="w-full md:w-1/2 flex flex-col"
+            className="w-full lg:w-1/2 flex flex-col"
           >
             <img
+              ref={Ref2}
               src={about}
               alt="Family"
               className="w-full h-full object-cover rounded-3xl border-r-orange-400 border-r-8 border-b-orange-400 border-b-8"
@@ -173,9 +174,9 @@ export default function AboutUs() {
             variants={ComingFromRight}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="w-full md:w-1/2 flex flex-col"
+            className="w-full lg:w-1/2 flex flex-col"
           >
-            <h1 className="text-xl font-bold text-[#2A2C38] my-8">
+            <h1 ref={Ref3} className="text-xl font-bold text-[#2A2C38] my-8">
               Welcome to Alphaa Financial Solutions
             </h1>
 
@@ -213,27 +214,27 @@ export default function AboutUs() {
           variants={parentVariants}
           initial="hidden"
           animate={isInView2 ? "visible" : "hidden"}
-          className="px-3 md:container md:mx-auto py-10 flex flex-col-reverse md:flex-row gap-7 md:gap-3 justify-center items-center"
+          className="px-8 lg:container lg:mx-auto py-10 flex flex-col-reverse lg:flex-row gap-7 lg:gap-3 justify-center items-center"
         >
           <motion.div
             variants={childVariants}
-            className="w-full md:w-1/2  h-full flex justify-center items-center"
+            className="w-full lg:w-1/2  h-full flex justify-center items-center"
           >
             <Swiper
               effect={"fade"}
               loop={true}
               autoplay={{
-                delay: 3500,
+                delay: 4000,
                 disableOnInteraction: false,
               }}
-              allowTouchMove={false} 
-              modules={[EffectFade]}
+              allowTouchMove={false}
+              modules={[EffectFade, Autoplay]}
               className="mySwiper w-full h-[35rem]  rounded-3xl border-l-orange-400 border-l-8 border-b-orange-400 border-b-8 "
             >
               {ServicesHomeSlider.map((item, index) => (
                 <SwiperSlide key={index}>
                   <img
-                    src={item.ServicesSlider}
+                    src={item.Photo}
                     className="w-full h-full object-cover object-center  rounded-3xl "
                     alt={`Slide ${index}`}
                   />
@@ -244,7 +245,7 @@ export default function AboutUs() {
 
           <motion.div
             variants={childVariants}
-            className="w-full md:w-1/2  h-full flex flex-col py-8 md:py-20 md:px-10"
+            className="w-full lg:w-1/2  h-full flex flex-col py-8 lg:py-20 lg:px-10"
           >
             <div className="flex items-center gap-3">
               <div

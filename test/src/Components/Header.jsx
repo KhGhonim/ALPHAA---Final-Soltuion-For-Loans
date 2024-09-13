@@ -39,7 +39,7 @@ export default function Header() {
             <img
               alt="logo"
               src={Logo}
-              className=" w-full h-20 pl-14 object-cover"
+              className=" w-full h-20 pl-16 object-cover"
             />
           </Link>
           <nav className="space-x-1 flex justify-center items-center">
@@ -121,7 +121,7 @@ export default function Header() {
       </header>
 
       {/* Tablet HEADER */}
-      <header className="hidden md:block lg:hidden bg-white p-4 font-cairo">
+      <header className="hidden md:block lg:hidden bg-white p-4 font-cairo overflow-hidden">
         <div className="w-10/12 flex justify-between items-center container mx-auto">
           <Link to="/" className="flex items-center ">
             <img alt="logo" src={Logo} className=" w-full h-16 object-cover" />
@@ -145,8 +145,8 @@ export default function Header() {
             </button>
           </nav>
         </div>
-        {menuOpen && (
-          <div className="absolute flex flex-col left-0 w-full right-0 translate-y-0 z-50 bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out">
+    
+          <div className={`absolute flex flex-col left-0 w-full right-0 translate-y-0 z-50 bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out ${menuOpen ? "translate-y-0" : "translate-y-[-100%]" }  `}>
             {HeaderData.map((list, index) => (
               <div key={index} className="relative">
                 {/* Main Link */}
@@ -203,7 +203,7 @@ export default function Header() {
               </div>
             ))}
           </div>
-        )}
+
       </header>
 
       {/* MOBILE HEADER */}

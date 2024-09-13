@@ -38,14 +38,14 @@ export default function PhotoAndCards({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       ref={ref}
-      className={`flex flex-col md:flex-row justify-center ${Style} font-cairo`}
+      className={`flex flex-col lg:flex-row justify-center ${Style} font-cairo`}
     >
       {Cards.map((card, index) => {
         return (
           <motion.div
             variants={childVariants}
             key={index}
-            className="relative  w-full md:w-1/3 group"
+            className="relative  w-full lg:w-1/3 group"
           >
             <img
               src={card.image}

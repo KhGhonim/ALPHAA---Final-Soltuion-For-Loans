@@ -173,9 +173,9 @@ export const OurStoryOurMissionDB = [
 ]
 
 export const ServicesHomeSlider = [
-  { ServicesSlider: Lovelygirl },
-  { ServicesSlider: AsianFamily },
-  { ServicesSlider: GrandmaAndGrandpaSitinginFlorr }
+  { Photo:  AsianFamily},
+  { Photo: Lovelygirl },
+  { Photo: GrandmaAndGrandpaSitinginFlorr }
 ]
 
 export const HomeSlider = [
@@ -256,3 +256,11 @@ export const CardsForRefinancing = [
     image: Card3,
   },
 ];
+
+export const questions = [
+  { id: 1, question: "What is a mortgage rate?" },
+  { id: 2, question: "Is a variable rate better than a fixed rate?" },
+  { id: 3, question: "How do I lock my mortgage rate?" },
+  { id: 4, question: "What is a mortgage rate hold?" },
+  { id: 5, question: "How often do mortgage rates change?" },
+]

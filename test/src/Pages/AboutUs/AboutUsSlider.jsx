@@ -44,11 +44,13 @@ export default function AboutUsSlider({ ComingFromDownSliders }) {
           return (
             <SwiperSlide onClick={() => setCurrentSlider(index)} key={index}>
               <div className="flex flex-col items-center text-center py-8">
-                <p className="text-lg  bg-white rounded max-w-3xl mx-auto px-4 mb-5 py-8">
+                <p className="text-xl  bg-white rounded max-w-3xl mx-auto px-4 mb-5 py-8">
                   {test.text}
                 </p>
+                <div className="space-y-2">
                 <p className="text-base font-bold">{test.name}</p>
                 <p className="text-base font-bold">{test.title}</p>
+                </div>
               </div>
             </SwiperSlide>
           );

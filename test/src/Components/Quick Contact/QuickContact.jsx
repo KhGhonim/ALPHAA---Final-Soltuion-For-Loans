@@ -6,8 +6,8 @@ import { MdOutlineEmail } from "react-icons/md";
 export default function QuickContact() {
   return (
     <div className="pt-16 max-md:pt-8 pb-16 px-5 bg-[--DarkBGAndText] text-white mb-2 font-cairo">
-      <div className="flex flex-col md:flex-row justify-between gap-8 container mx-auto  ">
-        <div className="w-full md:w-1/2 mt-12">
+      <div className="flex flex-col lg:flex-row justify-between gap-8 container mx-auto  ">
+        <div className="w-full lg:w-1/2 mt-12">
           <h2 className="text-xl font-semibold text-[--Ornage]">
             Quick Contact
           </h2>
@@ -40,7 +40,7 @@ export default function QuickContact() {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 bg-[--DarkQContact] p-9 rounded-3xl flex flex-col justify-around">
+        <div className="w-full lg:w-1/2 bg-[--DarkQContact] p-9 rounded-3xl flex flex-col justify-around">
           <h2 className="text-xl font-semibold text-white">Opening Hours</h2>
           <div className="mt-4">
             <Link className="flex justify-between items-center" to={"#"}>

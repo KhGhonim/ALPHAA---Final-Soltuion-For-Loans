@@ -91,7 +91,7 @@ export default function PersonalLoanPage() {
       <Helmet>
         <title>Personal Loan - AlPHAA Financial Solutions</title>
       </Helmet>
-      <h1 className="text-4xl bg-[#F5F5F5] md:text-5xl md:pl-28 font-bold p-4 ">
+      <h1 className="text-4xl bg-[#F5F5F5] md:text-5xl md:pl-24 font-bold p-4 ">
         Personal Loan
       </h1>
 
@@ -215,7 +215,7 @@ export default function PersonalLoanPage() {
         <CallToAction />
       </section>
 
-      <div className="flex flex-col  items-center max-md:pt-[500px] md:mt-36">
+      <div className="flex flex-col  items-center max-md:pt-[425px] md:mt-56 lg:mt-32">
         <div
           className="w-24 h-24 bg-orange-500"
           style={{
@@ -245,8 +245,8 @@ export default function PersonalLoanPage() {
 
       <PhotoAndCards
         Cards={CardsForRefinancing}
-        Style={`pt-16 pb-24 gap-24 md:gap-0 md:space-x-6 container mx-auto p-7 md:p-10`}
-        CardImageStyle={`w-full h-60 md:w-96   object-cover object-center rounded-lg`}
+        Style={`pt-16 pb-24 gap-24 lg:gap-0 lg:space-x-6 container mx-auto p-7 lg:p-10`}
+        CardImageStyle={`w-full h-80 lg:w-96   object-cover object-center rounded-lg`}
         CardTextStyle={`h-42 `}
         ParentDivStyle={`top-[65%] hover:top-[60%] max-md:-bottom-10 max-md:hover:bottom-0  inset-x-0 mx-auto`}
       />

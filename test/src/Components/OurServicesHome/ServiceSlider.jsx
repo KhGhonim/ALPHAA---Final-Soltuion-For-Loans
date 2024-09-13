@@ -31,7 +31,7 @@ export default function ServiceSlider({ height }) {
         {ServicesHomeSlider.map((item, index) => (
           <SwiperSlide className=" w-full h-full" key={index}>
             <img
-              src={item.ServicesSlider}
+              src={item.Photo}
               className=" h-full object-cover absolute inset-0 rounded-3xl zoom-out"
               alt={`Slide ${index}`}
             />
