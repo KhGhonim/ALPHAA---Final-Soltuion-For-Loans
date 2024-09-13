@@ -36,6 +36,7 @@ export default function AboutUsSlider({ ComingFromDownSliders }) {
       <Swiper
         spaceBetween={30}
         slidesPerView={1}
+        
         onSlideChange={(swiper) => setCurrentSlider(swiper.realIndex)}
         className="mySwiper max-w-xl md:max-w-3xl mx-auto px-4 cursor-pointer"
       >

@@ -23,6 +23,7 @@ export default function ServiceSlider({ height }) {
           delay: 4000,
           disableOnInteraction: false,
         }}
+        allowTouchMove={false} 
         modules={[Autoplay, EffectFade]}
         className="mySwiper w-full h-full  rounded-3xl "
         style={{ height: height ? `${height}px` : "auto" }}

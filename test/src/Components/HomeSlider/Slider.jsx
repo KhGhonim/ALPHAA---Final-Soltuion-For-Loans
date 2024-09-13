@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { HomeSlider } from "../../constants/db";
 import {
@@ -35,7 +34,9 @@ export default function Slider() {
       autoplay={{
         delay: 10000,
         disableOnInteraction: false,
+        
       }}
+      allowTouchMove={false} 
       navigation={{
         nextEl: ".button-next",
         prevEl: ".button-prev",

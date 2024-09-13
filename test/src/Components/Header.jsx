@@ -39,7 +39,7 @@ export default function Header() {
             <img
               alt="logo"
               src={Logo}
-              className=" w-full h-20 pl-44 object-cover"
+              className=" w-full h-20 pl-14 object-cover"
             />
           </Link>
           <nav className="space-x-1 flex justify-center items-center">

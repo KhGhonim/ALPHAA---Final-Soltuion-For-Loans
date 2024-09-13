@@ -226,6 +226,7 @@ export default function AboutUs() {
                 delay: 3500,
                 disableOnInteraction: false,
               }}
+              allowTouchMove={false} 
               modules={[EffectFade]}
               className="mySwiper w-full h-[35rem]  rounded-3xl border-l-orange-400 border-l-8 border-b-orange-400 border-b-8 "
             >
