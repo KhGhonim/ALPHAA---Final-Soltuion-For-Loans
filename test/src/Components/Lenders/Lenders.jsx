@@ -61,16 +61,16 @@ export default function Lenders() {
               <img
                 src={family}
                 alt="Family photo"
-                className="w-10/12 h-96 object-cover rounded-b-xl"
+                className="w-10/12 h-4/6 object-cover rounded-b-3xl rounded-l-3xl"
               />
 
               {/* MD divs */}
-              <div className="hidden md:block lg:hidden absolute bottom-[40%] left-[20%] hover:border-none cursor-pointer hover:bottom-[45%] transition-all duration-500  border-b-8 bg-white border-orange-400 text-center py-14 px-20   rounded-3xl">
+              <div className="hidden md:block lg:hidden absolute bottom-[25%] left-[20%] hover:border-none cursor-pointer hover:bottom-[30%] transition-all duration-500  border-b-8 bg-white border-orange-400 text-center py-14 px-20   rounded-3xl">
                 <span className="text-5xl font-bold">320+</span>
                 <br />
                 <span className="text-base font-bold">Lenders</span>
               </div>
-              <div className="hidden md:block lg:hidden absolute bottom-[35%] right-4 border-b-8 hover:border-none cursor-pointer hover:bottom-[40%] transition-all duration-500 bg-white border-orange-400 text-center py-14 px-20   rounded-3xl">
+              <div className="hidden md:block lg:hidden absolute bottom-[20%] right-4 border-b-8 hover:border-none cursor-pointer hover:bottom-[25%] transition-all duration-500 bg-white border-orange-400 text-center py-14 px-20   rounded-3xl">
                 <span className="text-5xl font-bold">20+</span>
                 <br />
                 <span className="text-base font-bold">Years Experience</span>
@@ -117,43 +117,45 @@ export default function Lenders() {
       </div>
 
       {/** SM divs */}
-      <div className="flex md:hidden h-[140dvh]   w-full relative bg-[#2A2C38] overflow-hidden ">
-        <div className="space-y-3 ">
-          <img
-            src={smroof}
-            alt="House"
-            className="w-56 absolute left-14 -top-11"
-          />
-          <div className="absolute bg-[#2A2C38]  top-10 h-1/2 bottom-0 left-0 right-0 flex flex-col justify-between items-center space-y-28 container mx-auto">
-            <div className="absolute right-8 left-8 top-0 text-4xl leading-snug   font-extrabold text-white text-start bg-[#22232D] py-9 px-5 rounded-3xl ">
-              <h1 className=" absolute -top-4">We Believe You're Bright</h1>
+      <div className="flex md:hidden lg:hidden h-screen flex-col overflow-hidden relative">
+        <div className="h-[60%] bg-[#2A2C38] flex flex-col relative">
+          <img src={smroof} alt="" className="w-56 absolute -top-10" />
+          <div className="mx-auto w-full pt-14 px-4 sm:px-6 lg:px-8 mb-8">
+            <div className="bg-[#22232D] h-20 flex rounded-3xl items-center justify-center">
+              <h1 className="text-4xl font-bold text-white">
+                We Believe You're Bright
+              </h1>
             </div>
-            <div className="w-full flex rounded-t-3xl px-10 flex-col justify-center items-center">
+          </div>
+          <div className="flex-grow flex items-end justify-center pb-8">
+            <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-8">
               <img
                 src={family}
-                alt="family"
-                className=" w-full h-[20em]  rounded-t-3xl z-10 object-cover "
+                alt="Family taking selfie"
+                className="w-full h-full object-cover rounded-t-3xl shadow-lg"
               />
-              <div>
-                <div className="block md:hidden lg:hidden z-20 absolute -bottom-7 left-[15%] hover:border-none cursor-pointer hover:bottom-[0%] transition-all duration-500  border-b-8 bg-white border-orange-400 text-center py-7 w-8/12  rounded-3xl">
-                  <span className="text-5xl font-bold">320+</span>
-                  <br />
-                  <span className="text-base font-bold">Lenders</span>
-                </div>
-              </div>
-              <div className="block md:hidden lg:hidden z-20 absolute -bottom-52 left-[15%] hover:border-none cursor-pointer hover:-bottom-44 transition-all duration-500  border-b-8 bg-white border-orange-400 text-center py-7 w-8/12  rounded-3xl">
-                <span className="text-5xl font-bold">20+</span>
-                <br />
-                <span className="text-base font-bold">Years Experience</span>
-              </div>
-              <div className="  w-full z-10   h-80 bg-[#22232D] rounded-b-3xl"></div>
             </div>
           </div>
         </div>
-
-        <div className="w-full lg:w-96 absolute bottom-0 left-0 h-1/2 bg-[#F5F5F5] "></div>
+        <div className="h-[40%] bg-[#F5F5F5] relative">
+          <div className="absolute inset-x-0 top-0">
+            <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
+              <div className="bg-[#22232D] h-72 rounded-b-3xl shadow-lg relative">
+                <div className="flex flex-col gap-4 p-6">
+                  <div className="bg-white absolute  right-6 left-6 -top-10 hover:-top-16 transition-all duration-300 ease-linear rounded-3xl p-4 border-b-8 border-orange-400">
+                    <p className="text-4xl font-bold text-center">320+</p>
+                    <p className="text-base font-bold text-center">Lenders</p>
+                  </div>
+                  <div className="bg-white absolute  right-6 left-6 top-28 hover:top-20 transition-all duration-300 ease-linear rounded-3xl p-4 border-b-8 border-orange-400">
+                    <p className="text-4xl font-bold text-center">20+</p>
+                    <p className="text-base font-bold text-center">Years Experience</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
       <div className="hidden md:block lg:hidden w-full bg-[#F5F5F5] md:h-16"></div>
     </div>
   );
