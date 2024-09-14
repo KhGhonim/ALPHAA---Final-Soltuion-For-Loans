@@ -117,43 +117,43 @@ export default function Lenders() {
       </div>
 
       {/** SM divs */}
-      <div className="flex md:hidden h-[100dvh] w-full relative bg-[#2A2C38] overflow-hidden ">
+      <div className="flex md:hidden h-[140dvh]   w-full relative bg-[#2A2C38] overflow-hidden ">
+        <div className="space-y-3 ">
+          <img
+            src={smroof}
+            alt="House"
+            className="w-56 absolute left-14 -top-11"
+          />
+          <div className="absolute bg-[#2A2C38]  top-10 h-1/2 bottom-0 left-0 right-0 flex flex-col justify-between items-center space-y-28 container mx-auto">
+            <div className="absolute right-8 left-8 top-0 text-4xl leading-snug   font-extrabold text-white text-start bg-[#22232D] py-9 px-5 rounded-3xl ">
+              <h1 className=" absolute -top-4">We Believe You're Bright</h1>
+            </div>
+            <div className="w-full flex rounded-t-3xl px-10 flex-col justify-center items-center">
+              <img
+                src={family}
+                alt="family"
+                className=" w-full h-[20em]  rounded-t-3xl z-10 object-cover "
+              />
+              <div>
+                <div className="block md:hidden lg:hidden z-20 absolute -bottom-7 left-[15%] hover:border-none cursor-pointer hover:bottom-[0%] transition-all duration-500  border-b-8 bg-white border-orange-400 text-center py-7 w-8/12  rounded-3xl">
+                  <span className="text-5xl font-bold">320+</span>
+                  <br />
+                  <span className="text-base font-bold">Lenders</span>
+                </div>
+              </div>
+              <div className="block md:hidden lg:hidden z-20 absolute -bottom-52 left-[15%] hover:border-none cursor-pointer hover:-bottom-44 transition-all duration-500  border-b-8 bg-white border-orange-400 text-center py-7 w-8/12  rounded-3xl">
+                <span className="text-5xl font-bold">20+</span>
+                <br />
+                <span className="text-base font-bold">Years Experience</span>
+              </div>
+              <div className="  w-full z-10   h-80 bg-[#22232D] rounded-b-3xl"></div>
+            </div>
+          </div>
+        </div>
+
         <div className="w-full lg:w-96 absolute bottom-0 left-0 h-1/2 bg-[#F5F5F5] "></div>
-
-        <img
-          src={smroof}
-          alt="House"
-          className="w-56 absolute right-0 left-0 -top-10"
-        />
-
-        <div className="absolute bg-[#2A2C38] top-10 h-1/2 bottom-0 left-0 right-0 flex flex-col justify-between items-center space-y-10 container mx-auto">
-          <div className="absolute right-0 left-0 top-0 text-4xl font-bold text-white text-start bg-[#22232D] p-8 rounded-3xl ">
-            <h1 className=" absolute -top-4">We Believe You're Bright</h1>
-          </div>
-
-          <div className="container mx-auto  py-10 w-full h-full">
-            <img
-              src={family}
-              alt="family"
-              className=" w-full h-full object-cover rounded-3xl"
-            />
-          </div>
-        </div>
-
-        <div className="w-full absolute top-1/2 right-0 left-0 container mx-auto h-80 bg-[#22232D] rounded-b-3xl">
-          <div className="block md:hidden lg:hidden absolute bottom-3/4 left-[5%] hover:border-none cursor-pointer hover:bottom-[85%] transition-all duration-500  border-b-8 bg-white border-orange-400 text-center py-7 w-11/12    rounded-3xl">
-            <span className="text-5xl font-bold">320+</span>
-            <br />
-            <span className="text-base font-bold">Lenders</span>
-          </div>
-
-          <div className="block  md:hidden lg:hidden absolute bottom-[20%] right-[5%] border-b-8 hover:border-none cursor-pointer hover:bottom-[30%] transition-all duration-500 bg-white border-orange-400 text-center py-7 w-11/12  rounded-3xl">
-            <span className="text-5xl font-bold">20+</span>
-            <br />
-            <span className="text-base font-bold">Years Experience</span>
-          </div>
-        </div>
       </div>
+
       <div className="hidden md:block lg:hidden w-full bg-[#F5F5F5] md:h-16"></div>
     </div>
   );

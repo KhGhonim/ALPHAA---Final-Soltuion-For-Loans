@@ -35,7 +35,7 @@ export default function PersonsWithKey() {
   return (
     <div
       ref={Ref3}
-      className=" bg-[#F5F5F5] mb-32 pb-[30vh] lg:pb-28 mt-10    relative"
+      className=" bg-[#F5F5F5] mb-32 pb-[50vh] lg:pb-28 mt-10    relative"
     >
       <motion.div
         variants={parentVariants}
@@ -107,7 +107,7 @@ export default function PersonsWithKey() {
           </div>
         </motion.div>
       </motion.div>
-      <div className="relative">
+      <div className="relative ">
         <CallToAction />
       </div>
     </div>

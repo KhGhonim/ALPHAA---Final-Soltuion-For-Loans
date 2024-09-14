@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 // @ts-ignore
 import Logo from "../assets/logo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdClose, MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { HeaderData } from "../constants/db";
 import { IoMenu } from "react-icons/io5";
@@ -11,16 +11,33 @@ import { RiArrowDownSFill } from "react-icons/ri";
 export default function Header() {
   const location = useLocation();
   const [state, setstate] = useState(location);
+  const [submenuOpen, setSubmenuOpen] = useState(false); //For the BIG Screens
+  const [servicesSubmenuOpen, setservicesSubmenuOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuToggle, setMenuToggle] = useState({});
+  const [servicesClickCount, setServicesClickCount] = useState(0);
+  const navigate = useNavigate();
 
-  const handleToggle = (index) => {
-    setMenuToggle((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
+  const handleLinkClick = (list) => {
+    if (!list.subMenu) {
+      setMenuOpen(false);
+      navigate(list.link);
+      setservicesSubmenuOpen(false);
+    } else if (list.name === "SERVICES") {
+      if (servicesClickCount === 0) {
+        setservicesSubmenuOpen(true);
+        setServicesClickCount(1);
+      } else {
+        setservicesSubmenuOpen(false);
+        setServicesClickCount(0);
+        navigate(list.link);
+      }
+    }
   };
 
+  const handleMenuClick = () => {
+    setMenuOpen(!menuOpen);
+    setservicesSubmenuOpen(false);
+  };
   /**
    * This useEffect hook is used to keep the state up to date with the current
    * location. This is necessary because the location prop is not updated
@@ -63,46 +80,52 @@ export default function Header() {
             >
               ABOUT US
             </Link>
-            <div className="relative group">
+            <div
+              className="relative group"
+              onMouseEnter={() => setSubmenuOpen(true)}
+              onMouseLeave={() => setSubmenuOpen(false)}
+            >
               {/* Main SERVICES Link */}
               <Link
                 to="/services"
                 className={`text-[#22232D] text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
-                  state.pathname === "/services"
-                    ? ""
-                    : " group-hover:text-white group-hover:bg-[#22232D]"
+                  submenuOpen
+                    ? "bg-[#22232D] text-white"
+                    : "group-hover:text-white group-hover:bg-[#22232D]"
                 } flex justify-center items-center gap-3`}
               >
                 SERVICES{" "}
-                <span className="group-hover:invisible">
+                <span className={submenuOpen ? "invisible" : ""}>
                   <MdOutlineKeyboardArrowDown />
                 </span>
               </Link>
 
               {/* Dropdown List */}
-              <ul className="absolute  top-16 left-0 z-50 w-80 hidden group-hover:block bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out">
-                {HeaderData[2].subMenu.map((list, index) => {
-                  return (
+              {submenuOpen && (
+                <ul className="absolute top-16 left-0 z-50 w-80 bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out">
+                  {HeaderData[2].subMenu.map((list, index) => (
                     <li key={index} className="w-full">
                       <Link
                         to={list.link}
                         className={`block w-full hover:text-white hover:bg-[#22232D] py-5 px-4 text-sm font-bold ${
                           state.pathname === list.link
                             ? "bg-orange-400"
-                            : " hover:text-white hover:bg-[#22232D]"
+                            : "hover:bg-[#22232D]"
                         } ${
                           index !== HeaderData[2].subMenu.length - 1
                             ? "border-b-2"
                             : ""
-                        } `}
+                        }`}
+                        onClick={() => setSubmenuOpen(false)} // Close submenu on click
                       >
                         {list.name}
                       </Link>
                     </li>
-                  );
-                })}
-              </ul>
+                  ))}
+                </ul>
+              )}
             </div>
+
             <Link
               to="/faq"
               className={`text-[#22232D] text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
@@ -121,7 +144,7 @@ export default function Header() {
       </header>
 
       {/* Tablet HEADER */}
-      <header className="hidden md:block lg:hidden bg-white p-4 font-cairo overflow-hidden">
+      <header className="hidden relative md:block lg:hidden bg-white p-4 font-cairo ">
         <div className="w-10/12 flex justify-between items-center container mx-auto">
           <Link to="/" className="flex items-center ">
             <img alt="logo" src={Logo} className=" w-full h-16 object-cover" />
@@ -145,14 +168,14 @@ export default function Header() {
             </button>
           </nav>
         </div>
-    
-          <div className={`absolute flex flex-col left-0 w-full right-0 translate-y-0 z-50 bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out ${menuOpen ? "translate-y-0" : "translate-y-[-100%]" }  `}>
-            {HeaderData.map((list, index) => (
+
+        {/* Dropdown Menu */}
+        {menuOpen && (
+          <div className="absolute flex flex-col left-0 w-full bottom-0 transform translate-y-full right-0 z-50 bg-white text-[#22232D] text-sm font-bold rounded-sm transition-all ease-in-out">
+            {HeaderData?.map((list, index) => (
               <div key={index} className="relative">
-                {/* Main Link */}
-                <Link
-                  to={list.link}
-                  onClick={() => handleToggle(index)} // Handle submenu toggle
+                <div
+                  onClick={() => handleLinkClick(list)}
                   className={`text-[#22232D] flex justify-between items-center text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
                     state.pathname === list.link
                       ? "bg-orange-400"
@@ -161,35 +184,27 @@ export default function Header() {
                 >
                   {list.name}
 
-                  {/* Down arrow for services */}
                   {list.subMenu && (
-                    <span
-                      className={`ml-2 transition-transform duration-300 ${
-                        menuToggle[index] ? "rotate-180" : "rotate-0"
-                      }`}
-                    >
+                    <span className={`ml-2 transition-transform duration-300`}>
                       <RiArrowDownSFill size={20} />
                     </span>
                   )}
-                </Link>
+                </div>
 
                 {/* Submenu for Services */}
-                {list.subMenu && (
-                  <ul
-                    className={`${
-                      menuToggle[index] ? "block" : "hidden"
-                    } flex flex-col left-0 w-full bg-white mt-1 relative`}
-                  >
-                    {list.subMenu.map((subItem, subIndex) => (
+                {servicesSubmenuOpen && list.name === "SERVICES" && (
+                  <ul className="flex flex-col left-0 w-full bg-white mt-1 relative">
+                    {list?.subMenu?.map((subItem, subIndex) => (
                       <li key={subIndex} className="w-full">
                         <Link
                           to={subItem.link}
+                          onClick={handleMenuClick} // Close main menu when submenu item is clicked
                           className={`block ${
                             state.pathname === subItem.link
                               ? "bg-orange-400"
                               : "hover:text-white hover:bg-[#22232D]"
                           } w-full pl-7 hover:bg-[#22232D] hover:text-white text-[#22232D] text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
-                            index !== list.subMenu.length - 1
+                            subIndex !== list.subMenu.length - 1
                               ? "border-b-2"
                               : ""
                           }`}
@@ -203,7 +218,7 @@ export default function Header() {
               </div>
             ))}
           </div>
-
+        )}
       </header>
 
       {/* MOBILE HEADER */}
@@ -234,9 +249,8 @@ export default function Header() {
                 {HeaderData.map((list, index) => (
                   <div key={index} className="relative">
                     {/* Main Link */}
-                    <Link
-                      to={list.link}
-                      onClick={() => handleToggle(index)} // Handle submenu toggle
+                    <div
+                      onClick={() => handleLinkClick(list)}
                       className={`text-[#22232D] flex justify-between items-center text-sm font-bold py-6 px-5 rounded-sm transition-all duration-500 ease-in-out ${
                         state.pathname === list.link
                           ? "bg-orange-400"
@@ -248,26 +262,23 @@ export default function Header() {
                       {/* Down arrow for services */}
                       {list.subMenu && (
                         <span
-                          className={`ml-2 transition-transform duration-300 ${
-                            menuToggle[index] ? "rotate-180" : "rotate-0"
-                          }`}
+                          className={`ml-2 transition-transform duration-300`}
                         >
                           <RiArrowDownSFill size={20} />
                         </span>
                       )}
-                    </Link>
+                    </div>
 
                     {/* Submenu for Services */}
-                    {list.subMenu && (
+                    {servicesSubmenuOpen && list.name === "SERVICES" && (
                       <ul
-                        className={`${
-                          menuToggle[index] ? "block" : "hidden"
-                        } flex flex-col left-0 w-full bg-white mt-1 relative`}
+                        className={` flex flex-col left-0 w-full bg-white mt-1 relative`}
                       >
-                        {list.subMenu.map((subItem, subIndex) => (
+                        {list?.subMenu?.map((subItem, subIndex) => (
                           <li key={subIndex} className="w-full">
                             <Link
                               to={subItem.link}
+                              onClick={handleMenuClick}
                               className={`block ${
                                 state.pathname === subItem.link
                                   ? "bg-orange-400"

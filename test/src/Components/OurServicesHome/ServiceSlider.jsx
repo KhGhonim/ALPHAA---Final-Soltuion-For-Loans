@@ -18,7 +18,6 @@ export default function ServiceSlider({ height }) {
     <>
       <Swiper
         effect={"fade"}
-        loop={true}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,

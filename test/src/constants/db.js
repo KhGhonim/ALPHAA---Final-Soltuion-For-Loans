@@ -208,7 +208,7 @@ export const HeaderData = [
   },
   {
     name: "FAQ'S",
-    link: "/faqs"
+    link: "/faq"
   }
 ];
 

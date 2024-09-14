@@ -36,7 +36,6 @@ export default function AboutUsSlider({ ComingFromDownSliders }) {
       <Swiper
         spaceBetween={30}
         slidesPerView={1}
-        
         onSlideChange={(swiper) => setCurrentSlider(swiper.realIndex)}
         className="mySwiper max-w-xl md:max-w-3xl mx-auto px-4 cursor-pointer"
       >
@@ -48,8 +47,8 @@ export default function AboutUsSlider({ ComingFromDownSliders }) {
                   {test.text}
                 </p>
                 <div className="space-y-2">
-                <p className="text-base font-bold">{test.name}</p>
-                <p className="text-base font-bold">{test.title}</p>
+                  <p className="text-base font-bold">{test.name}</p>
+                  <p className="text-base font-bold">{test.title}</p>
                 </div>
               </div>
             </SwiperSlide>

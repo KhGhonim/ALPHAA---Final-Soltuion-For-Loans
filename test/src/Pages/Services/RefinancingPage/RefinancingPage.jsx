@@ -116,7 +116,7 @@ export default function RefinancingPage() {
         </div>
       </div>
 
-      <section className="bg-[#F5F5F5] pt-16 md:pb-60 lg:pb-0 ">
+      <section className="bg-[#F5F5F5] pt-16 py-28 md:py-56 lg:py-28 max-md:px-2 ">
         <motion.div
           variants={parentVariants}
           initial="hidden"
@@ -204,7 +204,7 @@ export default function RefinancingPage() {
         <CallToAction />
       </section>
 
-      <div className="flex flex-col items-center max-md:pt-[500px] md:mt-32">
+      <div className="flex flex-col items-center max-md:pt-[350px] md:mt-32">
         <div
           className="w-24 h-24 bg-orange-500"
           style={{
@@ -235,8 +235,8 @@ export default function RefinancingPage() {
       <PhotoAndCards
         Cards={CardsForRefinancing}
         Style={`pt-16 pb-24 gap-24 lg:gap-0 lg:space-x-6 container mx-auto p-7 lg:p-10`}
-        CardImageStyle={`w-full h-96 lg:w-96   object-cover object-center rounded-2xl`}
-        CardTextStyle={`md:h-32 text-center lg:h-64`}
+        CardImageStyle={`w-full h-80 lg:w-96   object-cover object-center rounded-lg`}
+        CardTextStyle={`h-42 `}
         ParentDivStyle={`top-[65%] hover:top-[60%] max-lg:-bottom-10 max-lg:hover:bottom-0  inset-x-0 mx-auto`}
       />
     </div>

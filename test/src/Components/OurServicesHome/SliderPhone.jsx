@@ -3,13 +3,20 @@ import "swiper/css";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css/effect-fade";
 import { ServicesHomeSlider } from "../../constants/db";
+import CountUp, { useCountUp } from "react-countup";
 
 export default function SliderPhone() {
+  useCountUp({
+    ref: "counter",
+    end: 100,
+    scrollSpyOnce: true,
+    scrollSpyDelay: 1000,
+    enableScrollSpy: true,
+  });
   return (
     <>
       <Swiper
         effect={"fade"}
-        loop={true}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
@@ -33,7 +40,10 @@ export default function SliderPhone() {
               <h4 className="mt-4 text-xl text-start ">
                 We have the expertise to guide you through the process.
               </h4>
-              <h6 className="mt-4 text-3xl  text-center font-bold"> 100 +</h6>
+              <div className="mt-4 text-center font-bold text-3xl">
+                {" "}
+                <CountUp end={100} enableScrollSpy scrollSpyOnce  /> +
+              </div>
               <h6 className="mt-2 text-xl text-center font-bold">
                 Simplify the loan
               </h6>

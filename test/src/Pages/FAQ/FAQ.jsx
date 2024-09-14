@@ -10,7 +10,6 @@ import { RxResume } from "react-icons/rx";
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
 
-
 const ComingFromDown = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -116,8 +115,6 @@ export default function FAQ() {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 }

@@ -30,7 +30,6 @@ export default function Slider() {
   return (
     <Swiper
       effect={"fade"}
-      loop={true}
       autoplay={{
         delay: 10000,
         disableOnInteraction: false,

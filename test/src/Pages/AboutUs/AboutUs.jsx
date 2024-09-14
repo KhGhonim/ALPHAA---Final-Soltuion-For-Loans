@@ -144,7 +144,7 @@ export default function AboutUs() {
           </h1>
         </motion.div>
 
-        <div className="flex justify-center items-center flex-col lg:flex-row gap-10 lg:py-10  lg:px-5">
+        <div className="flex justify-center items-center flex-col lg:flex-row gap-10 px-5 lg:py-10  lg:px-5">
           <motion.div
             variants={ComingFromLeft}
             initial="hidden"
