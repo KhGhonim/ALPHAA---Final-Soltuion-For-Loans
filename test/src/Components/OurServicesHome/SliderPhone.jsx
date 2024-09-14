@@ -42,7 +42,8 @@ export default function SliderPhone() {
               </h4>
               <div className="mt-4 text-center font-bold text-3xl">
                 {" "}
-                <CountUp end={100} enableScrollSpy scrollSpyOnce  /> +
+                <CountUp end={100} enableScrollSpy scrollSpyOnce /> +
+                <span id="counter" />
               </div>
               <h6 className="mt-2 text-xl text-center font-bold">
                 Simplify the loan

@@ -1,6 +1,6 @@
 export default function ServiceHomeCard({ item }) {
   return (
-    <div className="h-full bg-[#FFFFFF]  rounded-3xl shadow-lg border-b-4 border-orange-500 p-7 w-full">
+    <div className="lg:h-[27rem] bg-[#FFFFFF]  rounded-3xl shadow-lg border-b-4 border-orange-500 p-5 lg:p-7 w-full">
       <div className="flex flex-col gap-5 md:flex-row max-md:justify-center text-center items-center mb-6 ">
         <div
           className="w-16 h-16 bg-orange-500"

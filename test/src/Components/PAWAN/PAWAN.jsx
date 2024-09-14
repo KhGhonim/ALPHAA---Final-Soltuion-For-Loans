@@ -23,9 +23,7 @@ const childVariants = {
     y: 0,
     transition: {
       type: "easeInOut",
-      duration: 0.8,
-      stiffness: 100,
-      damping: 10,
+      duration: 1,
     },
   },
 };
@@ -58,7 +56,10 @@ export default function PAWAN({ photo }) {
       <div className="absolute inset-0 bg-gradient-to-l from-orange-400 to-orange-500 opacity-50 z-10"></div>
 
       {/* Content */}
-      <div ref={ref} className="relative z-50 space-y-4 flex justify-center items-center flex-col">
+      <div
+        ref={ref}
+        className="relative z-50 space-y-4 flex justify-center items-center flex-col"
+      >
         <div className="flex justify-center">
           {location.pathname === "/about-us" ? (
             <div className="w-16 h-16 bg-[#2A2C38] mb-4" />
@@ -85,11 +86,14 @@ export default function PAWAN({ photo }) {
           variants={parentVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="bg-white cursor-pointer  z-50 hover:!scale-110 w-44 text-black max-md:w-full font-bold py-5 px-8 rounded-lg shadow-lg transition-all duration-300"
+          whileHover={{ scale: 1.1 }}
+          transition={{
+            type: "spring",
+            duration: 0.6,
+          }}
+          className="bg-white cursor-pointer z-50 w-44 text-black max-md:w-full font-bold py-5 px-8 rounded-lg shadow-lg"
         >
-          <motion.button className="z-50" variants={childVariants}>
-            CONTACT US
-          </motion.button>
+          <button className="z-50">CONTACT US</button>
         </motion.div>
 
         <div className="w-full flex flex-col md:flex-row justify-center mt-6 text-center gap-2">

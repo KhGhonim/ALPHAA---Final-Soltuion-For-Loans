@@ -87,7 +87,7 @@ export default function SmsfLendingPage() {
   }, [sliderHeight]);
 
   return (
-    <div className="flex flex-col  h-full  bg-white font-cairo   pb-[30px] md:pb-20    relative">
+    <div className="flex flex-col  h-full  bg-white font-cairo   pb-[30px] md:pb-20  !overflow-hidden   relative">
       <Helmet>
         <title>
           Self-Managed Super Fund (SMSF) Lending - AlPHAA Financial Solutions

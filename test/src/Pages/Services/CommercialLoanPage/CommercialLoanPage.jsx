@@ -86,7 +86,7 @@ export default function CommercialLoanPage() {
   }, [sliderHeight]);
 
   return (
-    <div className="flex flex-col  h-full  bg-[#F5F5F5] font-cairo  pb-[30px] md:pb-20    relative">
+    <div className="flex flex-col  h-full  bg-[#F5F5F5] font-cairo  pb-[30px] md:pb-20  !overflow-hidden   relative">
       <Helmet>
         <title>Commercial Loan - AlPHAA Financial Solutions</title>
       </Helmet>

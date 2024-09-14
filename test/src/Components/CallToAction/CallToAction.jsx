@@ -23,7 +23,7 @@ export default function CallToAction() {
       animate={isInView3 ? "visible" : "hidden"}
       className="  absolute h-full right-0 left-0 p-7 lg:px-24  text-[#fff]"
     >
-      <div className="flex flex-col items-center space-y-1 py-10 lg:py-0  bg-[#2A2C38]  lg:flex-row lg:p-20 gap-3  lg:h-48  container mx-auto rounded-lg">
+      <div className="flex flex-col items-center space-y-1 py-10 lg:py-0  bg-[#2A2C38]  lg:flex-row lg:p-20 gap-3  lg:h-48  container mx-auto rounded-lg ">
         <h1 className="text-4xl text-center py-4   font-bold text-white lg:w-2/6 capitalize">
           How to estimate mortgage payments
         </h1>

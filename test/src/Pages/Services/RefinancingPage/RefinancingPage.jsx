@@ -87,7 +87,7 @@ export default function RefinancingPage() {
   }, [sliderHeight]);
 
   return (
-    <div className="flex flex-col  h-full  bg-white font-cairo  pb-[30px] md:pb-20    relative">
+    <div className="flex flex-col  h-full  bg-white font-cairo  pb-[30px] md:pb-20  !overflow-hidden   relative">
       <Helmet>
         <title>Refinancing - AlPHAA Financial Solutions</title>
       </Helmet>

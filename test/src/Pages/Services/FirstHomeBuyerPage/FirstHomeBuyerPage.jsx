@@ -84,7 +84,7 @@ export default function FirstHomeBuyerPage() {
   }, [sliderHeight]);
 
   return (
-    <div className="flex flex-col  h-full  bg-white font-cairo   pb-[350px] md:pb-[300px] lg:pb-40    relative">
+    <div className="flex flex-col  h-full  bg-white font-cairo   pb-[350px] md:pb-[300px] lg:pb-40    relative  !overflow-hidden">
       <Helmet>
         <title>First Home Buyer - AlPHAA Financial Solutions</title>
       </Helmet>
@@ -113,7 +113,7 @@ export default function FirstHomeBuyerPage() {
         </div>
       </div>
 
-      <section ref={Ref3} className="bg-[#F5F5F5] py-28 ">
+      <section ref={Ref3} className="bg-[#F5F5F5] py-28  ">
         <motion.div
           variants={parentVariants}
           initial="hidden"

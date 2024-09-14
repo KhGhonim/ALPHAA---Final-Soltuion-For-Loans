@@ -6,6 +6,7 @@ import { ServicesHomeSlider } from "../../constants/db";
 import CountUp, { useCountUp } from "react-countup";
 
 export default function ServiceSlider({ height }) {
+
   useCountUp({
     ref: "counter",
     end: 100,
@@ -22,7 +23,7 @@ export default function ServiceSlider({ height }) {
           delay: 4000,
           disableOnInteraction: false,
         }}
-        allowTouchMove={false} 
+        allowTouchMove={false}
         modules={[Autoplay, EffectFade]}
         className="mySwiper w-full h-full  rounded-3xl "
         style={{ height: height ? `${height}px` : "auto" }}
@@ -44,7 +45,8 @@ export default function ServiceSlider({ height }) {
               </h4>
               <div className="mt-4 text-center font-bold text-3xl">
                 {" "}
-                <CountUp end={100} enableScrollSpy scrollSpyOnce  /> +
+                <CountUp end={100} enableScrollSpy scrollSpyOnce /> +
+                <span id="counter" />
               </div>
               <h6 className="mt-2 text-base text-center ">Simplify the loan</h6>
             </div>
