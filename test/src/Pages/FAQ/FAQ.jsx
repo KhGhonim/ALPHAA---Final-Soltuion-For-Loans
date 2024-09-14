@@ -1,16 +1,25 @@
 import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
 import Arrow from "../../assets/Arrow.json";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import homeloans from "../../assets/ServicesBanner.jpg";
 import Comp from "../../assets/comp.jpg";
-import ManAnd2Women from "../../assets/ManAnd2Women.jpg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { questions } from "../../constants/db";
 import { RxResume } from "react-icons/rx";
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
+import AboutUsSlider from "../../Pages/AboutUs/AboutUsSlider";
+// @ts-ignore
+import blackboy from "../../assets/blackboy.jpg";
+// @ts-ignore
+import whitboiy from "../../assets/whitboiy.jpg";
+// @ts-ignore
+import yasli from "../../assets/yasli.jpg";
+import FAQFormSMAndMD from "./FAQFormSMAndMD";
+import FormBG from "./FormBG";
 
+const photos = [blackboy, whitboiy, yasli];
 const ComingFromDown = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -24,11 +33,93 @@ const ComingFromDown = {
     },
   },
 };
+
+const parentVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1.5,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "easeInOut", stiffness: 100, damping: 10 },
+  },
+};
+
+const parentVariants2 = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1.1,
+    },
+  },
+};
+
+const parentVariants3 = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1.1,
+    },
+  },
+};
+
+const ComingFromDownSliders = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "easeInOut",
+      stiffness: 100,
+      damping: 10,
+      duration: 1,
+    },
+  },
+};
+
 export default function FAQ() {
   const [expandedId, setExpandedId] = useState(null);
+  const [IsItOpened, setIsItOpened] = useState(questions[0].id);
+
+  const Ref2 = useRef(null);
+  const isInView2 = useInView(Ref2, { once: true });
+
+  const Ref3 = useRef(null);
+  const isInView3 = useInView(Ref3, { once: true });
+
+  const Ref4 = useRef(null);
+  const isInView4 = useInView(Ref4, { once: true });
+  useEffect(() => {
+    setExpandedId(questions[0].id);
+    setIsItOpened(questions[0].id);
+  }, [questions]);
 
   const toggleQuestion = (id) => {
     setExpandedId(expandedId === id ? null : id);
+    setIsItOpened(id);
   };
 
   return (
@@ -62,24 +153,33 @@ export default function FAQ() {
       </div>
 
       <div className="bg-[#F5F5F5]">
-        <div className="max-w-7xl mx-auto py-16 px-10">
-          <div className="grid md:grid-cols-2 gap-14">
-            <div className="relative overflow-hidden">
+        <div ref={Ref2} className="max-w-7xl mx-auto py-16 px-5">
+          <motion.div
+            variants={parentVariants}
+            initial="hidden"
+            animate={isInView2 ? "visible" : "hidden"}
+            className="flex flex-col-reverse lg:flex-row  gap-14"
+          >
+            <motion.div
+              variants={childVariants}
+              className="relative overflow-hidden"
+            >
               <img
                 src={Comp}
                 alt="Couple looking at computer"
                 className="object-cover w-full h-full rounded-3xl"
               />
               <div className="absolute inset-0  flex items-center justify-center">
-                <button className="bg-orange-400 absolute flex justify-center items-center text-2xl flex-col text-black top-0 right-0 w-44 h-44 rounded-l-3xl hover:bg-white transition-all duration-500 ease-in-out font-bold">
+                <button className="bg-orange-400 absolute flex justify-center items-center text-xs md:text-2xl flex-col text-black top-0 right-0 w-20 h-20 md:w-44 md:h-44 rounded-bl-3xl rounded-tr-3xl hover:bg-white transition-all duration-500 ease-in-out font-bold">
                   <span>
-                    <RxResume className="text-5xl" />
+                    <RxResume className="text-xl md:text-5xl" />
                   </span>
                   Watch Video
                 </button>
               </div>
-            </div>
-            <div>
+            </motion.div>
+
+            <motion.div variants={childVariants}>
               <h2 className="text-4xl font-bold mb-4">
                 Learn About Rates & Mortgages
               </h2>
@@ -96,73 +196,118 @@ export default function FAQ() {
                         className="flex justify-between items-center w-full p-4 text-left"
                         onClick={() => toggleQuestion(q.id)}
                       >
-                        <span className="text-lg font-bold">{q.question}</span>
+                        <span
+                          className={`text-lg font-bold lex justify-between items-center w-full p-4 text-left  ${
+                            IsItOpened === q.id
+                              ? "  text-orange-400"
+                              : "text-black"
+                          }`}
+                        >
+                          {q.question}
+                        </span>
                         {expandedId === q.id ? (
-                          <FiMinus className="h-5 w-5 text-gray-500" />
+                          <FiMinus
+                            className={`h-5 w-5 ${
+                              IsItOpened === q.id
+                                ? " text-orange-400"
+                                : "text-black"
+                            }`}
+                          />
                         ) : (
-                          <FiPlus className="h-5 w-5 text-gray-500" />
+                          <FiPlus
+                            className={`h-5 w-5 ${
+                              IsItOpened === q.id
+                                ? " text-orange-400"
+                                : "text-gray-500"
+                            }`}
+                          />
                         )}
                       </button>
                       {expandedId === q.id && (
                         <div className="p-4 bg-gray-50">
-                          <p>Answer to goes here.</p>
+                          <p>{q.answer}</p>
                         </div>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
-      <div className="min-h-screen flex flex-col py-20 bg-[#2A2C38]">
-      <div className="flex-1 p-6 flex flex-col space-y-8">
-        <div className="text-center space-y-6 pb-8">
-          <div className="w-20 h-20 bg-orange-400 mx-auto mb-2"></div>
-          <p className="text-orange-400 mb-2">Your Mortgage Down Payment</p>
-          <h1 className="text-4xl font-bold text-white">How To Navigate Our Mortgage Rates</h1>
-        </div>
+      <div className="min-h-screen flex relative  flex-col pt-20 pb-96 lg:py-20 bg-[#2A2C38]">
+        <div className="flex-1 p-6  flex flex-col space-y-8">
+          <div className="text-center space-y-6 pb-8">
+            <motion.div
+              variants={parentVariants3}
+              initial="hidden"
+              animate={isInView3 ? "visible" : "hidden"}
+              className="w-20 h-20 bg-orange-400 mx-auto mb-2"
+            ></motion.div>
+            <p ref={Ref3} className="text-orange-400 mb-2">
+              Your Mortgage Down Payment
+            </p>
+            <h1 ref={Ref4} className="text-4xl font-bold text-white">
+              How To Navigate Our Mortgage Rates
+            </h1>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 container mx-auto">
-          {['You Use Your Property', 'The Type Of Mortgage', 'With Fixed Mortgages'].map((title, index) => (
-            <div key={index} className="bg-[#22232D] p-10 rounded-lg flex justify-center flex-col items-center space-y-3 text-center">
-              <div className="w-12 h-12 bg-orange-400 mb-4"></div>
-              <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
-              <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-orange-400 rounded-2xl overflow-hidden relative container mx-auto">
-          <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-2/5">
-              <img
-                src={ManAnd2Women}
-                alt="People in a meeting"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="lg:w-3/5 p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-8 h-8 bg-[#2A2C38] mr-2"></div>
-                <span className="text-[#2A2C38] font-semibold">Online Booking</span>
+          <motion.div
+            variants={parentVariants2}
+            initial="hidden"
+            animate={isInView4 ? "visible" : "hidden"}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6 container mx-auto"
+          >
+            {[
+              "You Use Your Property",
+              "The Type Of Mortgage",
+              "With Fixed Mortgages",
+            ].map((title, index) => (
+              <div
+                key={index}
+                className="bg-[#22232D] p-10 rounded-lg flex justify-center flex-col items-center space-y-3 text-center"
+              >
+                <div className="w-12 h-12 p-5 bg-orange-400 mb-4"></div>
+                <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
+                <p className="text-white">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
               </div>
-              <h2 className="text-2xl font-bold text-[#2A2C38] mb-4">Contact Us To Start Saving Time And Money</h2>
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="NAME" className="bg-white" />
-                <input type="email" placeholder="EMAIL" className="bg-white" />
-                <input type="text" placeholder="SUBJECT" className="bg-white md:col-span-2" />
-                <button className="bg-[#2A2C38] text-white hover:bg-[#363845] md:col-span-2">
-                  MAKE AN APPOINTMENT
-                </button>
-              </form>
-            </div>
+            ))}
+          </motion.div>
+
+          <FormBG />
+
+          <FAQFormSMAndMD />
+        </div>
+      </div>
+
+      <div className="w-full h-full mt-96 md:mt-[600px] lg:mt-72 bg-[#F5F5F5]">
+        <motion.div
+          variants={ComingFromDownSliders}
+          initial="hidden"
+          animate={isInView3 ? "visible" : "hidden"}
+          ref={Ref3}
+          className="w-full md:container md:mx-auto flex  justify-center gap-7"
+        >
+          {photos.map((item, index) => (
+            <img
+              key={index}
+              src={item}
+              className="w-28 h-28 object-cover object-center border-l-4 border-b-4 rounded-2xl border-b-orange-400 border-l-orange-400"
+              alt={`Slide ${index}`}
+            />
+          ))}
+        </motion.div>
+
+        <div>
+          <div className="flex justify-center">
+            <AboutUsSlider ComingFromDownSliders={ComingFromDownSliders} />
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

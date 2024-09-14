@@ -173,7 +173,7 @@ export const OurStoryOurMissionDB = [
 ]
 
 export const ServicesHomeSlider = [
-  { Photo:  AsianFamily},
+  { Photo: AsianFamily },
   { Photo: Lovelygirl },
   { Photo: GrandmaAndGrandpaSitinginFlorr }
 ]
@@ -258,9 +258,9 @@ export const CardsForRefinancing = [
 ];
 
 export const questions = [
-  { id: 1, question: "What is a mortgage rate?" },
-  { id: 2, question: "Is a variable rate better than a fixed rate?" },
-  { id: 3, question: "How do I lock my mortgage rate?" },
-  { id: 4, question: "What is a mortgage rate hold?" },
-  { id: 5, question: "How often do mortgage rates change?" },
+  { id: 1, question: "What is a mortgage rate?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo." },
+  { id: 2, question: "Is a variable rate better than a fixed rate?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo." },
+  { id: 3, question: "How do I lock my mortgage rate?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo." },
+  { id: 4, question: "What is a mortgage rate hold?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo." },
+  { id: 5, question: "How often do mortgage rates change?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo." },
 ]
