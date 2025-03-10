@@ -86,7 +86,7 @@ export default function HomeLoanPage() {
       <PhotoAndCards
         Cards={CardsForHomeLoans}
         Style={`pt-16 pb-24 gap-24 lg:gap-0 lg:space-x-6 container mx-auto p-7 lg:p-10`}
-        CardImageStyle={`w-full h-96 lg:w-96 lg:h-96 object-cover object-center rounded-2xl`}
+        CardImageStyle={`w-full h-96  object-cover object-center rounded-2xl`}
         CardTextStyle={`h-72 md:h-60 text-center lg:h-64`}
         ParentDivStyle={`-bottom-10 text-center hover:bottom-0 top-[40%] hover:top-[35%] inset-x-0 mx-auto`}
       />

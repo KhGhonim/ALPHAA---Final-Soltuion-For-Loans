@@ -247,7 +247,7 @@ export default function SmsfLendingPage() {
       <PhotoAndCards
         Cards={CardsForRefinancing}
         Style={`pt-16 pb-24 gap-24 lg:gap-0 lg:space-x-6 container mx-auto p-7 lg:p-10`}
-        CardImageStyle={`w-full h-80 lg:w-96   object-cover object-center rounded-lg`}
+        CardImageStyle={`w-full h-80  object-cover object-center rounded-lg`}
         CardTextStyle={`h-42 `}
         ParentDivStyle={`top-[65%] hover:top-[60%] max-md:-bottom-10 max-md:hover:bottom-0  inset-x-0 mx-auto`}
       />

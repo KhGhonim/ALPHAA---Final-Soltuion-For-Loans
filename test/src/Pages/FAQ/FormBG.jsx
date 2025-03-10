@@ -2,9 +2,9 @@ import ManAnd2Women from "../../assets/ManAnd2Women.jpg";
 
 export default function FormBG() {
   return (
-    <div className="hidden lg:block bg-[#FF9021] absolute -bottom-[30%] right-0 left-0 rounded-2xl overflow-hidden  container mx-auto">
-      <div className="flex flex-col relative lg:flex-row h-96">
-        <div className="lg:w-2/6">
+    <div className="hidden lg:block bg-[#FF9021] absolute -bottom-44 right-0  left-0 rounded-2xl overflow-hidden  container mx-auto">
+      <div className="flex w-full flex-col relative lg:flex-row h-96 ">
+        <div className="lg:w-2/6 ">
           <img
             src={ManAnd2Women}
             alt="People in a meeting"
